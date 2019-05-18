@@ -1,7 +1,20 @@
-import {Redirect} from 'react-router-dom';
+import { Redirect, Switch } from "react-router-dom";
+import { routerData } from "./config/routerConfig";
+import AuthorizedRoute from "./route/AuthorizedRoute";
 
-export default (
-    <div>
-        1111
-    </div>
-);
+
+const Routes = (props) => {
+  return(
+    <Switch>
+      {
+          routerData.map((item,index)=>{
+            return (
+              <Route path={item.path} key={index} component={item.component}/>
+            )
+          })
+        }
+    </Switch>
+  )
+}
+
+export default Routes;

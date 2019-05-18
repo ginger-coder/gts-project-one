@@ -1,28 +1,25 @@
 import {Provider} from 'react-redux';
-import {ConnectedRouter} from 'react-router-redux';
-import {store, history} from 'store';
+import {store} from 'store';
 
-import routes from './app';
-
-import 'style/reset.css';
+import Routes from './app';
 
 function render(routes) {
     ReactDOM.render(
         <Provider store={store}>
-            <ConnectedRouter history={history}>
-                { routes }
-            </ConnectedRouter>
+            <Router>
+                <Routes />
+            </Router>
         </Provider>
         ,
         document.getElementById('root')
     );
 };
 
-render(routes);
+render(Routes);
 
 if (module.hot) {
     module.hot.accept('./app', () => {
-        render(routes);
+        render(Routes);
     });
 
 }

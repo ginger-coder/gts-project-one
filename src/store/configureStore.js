@@ -1,14 +1,8 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
 
 import thunk from 'redux-thunk';
 
 import reducer from './reducers';
-
-const history = createHistory();
-
-const routerML = routerMiddleware(history);
 
 const store = function configureStore() {
 
@@ -16,20 +10,19 @@ const store = function configureStore() {
         let store = createStore(
             reducer,
             compose(
-                applyMiddleware(thunk, routerML)
+                applyMiddleware(thunk)
             )
         );
-
         return store;
     }else{
         return createStore(
             reducer,
             compose(
-                applyMiddleware(thunk, routerML),
+                applyMiddleware(thunk),
                 window.devToolsExtension ? window.devToolsExtension() : f=>f
             )
         );
     }
 }();
 
-export {history, store};
+export { store };

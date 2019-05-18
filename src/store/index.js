@@ -1,2 +1,2 @@
 
-export {store, history} from './configureStore';
+export {store} from './configureStore';
