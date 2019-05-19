@@ -1,5 +1,6 @@
 import AppHomePage from '../pages/home';
 import PersonPage from '../pages/person';
+import LoginPage from '../pages/Login';
 const routerData = [{
         path: '/home',
         component: AppHomePage,
@@ -17,6 +18,11 @@ const routerData = [{
             path: '/person',
             component: PersonPage,
         }]
+    },
+    {
+        path: '/login',
+        component: LoginPage,
+        authority: ['user', 'admin'],
     }
 ]
 

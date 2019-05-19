@@ -60,7 +60,7 @@ module.exports = {
             dfPath.route,
             dfPath.component,
             dfPath.layout,
-            dfPath.store
+            dfPath.store,
         ]
     }
 };

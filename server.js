@@ -3,6 +3,7 @@ const webpackDevServer = require('webpack-dev-server');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const proxy = require('http-proxy-middleware');
 const historyApiFallback = require('connect-history-api-fallback');
 
 const ip = require('ip');
@@ -28,14 +29,14 @@ const options = {
 
 let port = 9000;
 
-newConfig = strategyMerge(config,{
+newConfig = strategyMerge(config, {
     entry: [
         'webpack-hot-middleware/client?reload=true',
         './src/index.js'
     ],
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new OpenBrowserPlugin({url: `http://${ip.address()}:${port}/?react_pref`}),
+        new OpenBrowserPlugin({ url: `http://${ip.address()}:${port}/?react_pref` }),
     ]
 });
 
@@ -43,19 +44,24 @@ const compiler = webpack(newConfig);
 
 let middleware = webpackDevMiddleware(compiler, options);
 
+
 app.use(historyApiFallback({
     index: '/index.html'
 }));
 
 app.use(middleware);
-app.use( webpackHotMiddleware(compiler));
+app.use(webpackHotMiddleware(compiler));
+app.use(
+    '/api',
+    proxy({ target: 'http://123.207.174.24:8000', changeOrigin: true })
+);
 
-app.get('/*', (req, res)=> res.sendFile(__dirname + '/index.html') );
+app.get('/*', (req, res) => res.sendFile(__dirname + '/index.html'));
 
-app.listen(port, (error)=>{
-    if(error){
+app.listen(port, (error) => {
+    if (error) {
         console.log(error);
         return;
     }
-    console.log( `dev server listening on port ${port}` );
+    console.log(`dev server listening on port ${port}`);
 })

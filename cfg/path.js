@@ -14,5 +14,5 @@ module.exports = {
     route: rv('src/route'),
     store: rv('src/store'),
     public: rv('public'),
-    node_modules: rv('node_modules')
+    node_modules: rv('node_modules'),
 };
