@@ -38,11 +38,11 @@ let config = {
                 ]
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: extractCSS.extract({
-                    use: ['css-loader']
+                    use: ['css-loader','sass-loader']
                 })
-            },
+			},
 			{
                 test: /\.(png|jpg|jpeg|gif)$/,
                 use: [

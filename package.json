@@ -10,17 +10,9 @@
     "serve": "serve ./dist/ -s -o",
     "un": "npm install -D babel-core babel-loader babel-preset-react"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flowke/smartisan-shopping-car.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/flowke/smartisan-shopping-car/issues"
-  },
-  "homepage": "https://github.com/flowke/smartisan-shopping-car#readme",
   "dependencies": {
     "antd-mobile": "^2.2.13",
     "axios": "^0.17.1",
@@ -69,7 +61,10 @@
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.9.4",
     "webpack-hot-middleware": "^2.20.0",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "sass-loader": "^6.0.6",
+    "node-sass": "^4.7.2"
+
   },
   "babel": {
     "presets": [

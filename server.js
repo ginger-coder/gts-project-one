@@ -52,8 +52,11 @@ app.use(historyApiFallback({
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
 app.use(
-    '/api',
-    proxy({ target: 'http://123.207.174.24:8000', changeOrigin: true })
+    '/',
+    proxy({ 
+        target: 'http://123.207.174.24:8000', 
+        changeOrigin: true
+    })
 );
 
 app.get('/*', (req, res) => res.sendFile(__dirname + '/index.html'));

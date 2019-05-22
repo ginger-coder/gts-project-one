@@ -1,13 +1,13 @@
 import { Redirect, Switch } from "react-router-dom";
-import { routerData } from "./config/routerConfig";
+import { MainRouterConfig } from "./config/routerConfig";
 import AuthorizedRoute from "./route/AuthorizedRoute";
-
+import './common/assets/reset.css';
 
 const Routes = (props) => {
   return(
     <Switch>
       {
-          routerData.map((item,index)=>{
+          MainRouterConfig.map((item,index)=>{
             return (
               <Route path={item.path} key={index} component={item.component}/>
             )
