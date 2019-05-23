@@ -36,7 +36,7 @@ newConfig = strategyMerge(config, {
     ],
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new OpenBrowserPlugin({ url: `http://${ip.address()}:${port}/?react_pref` }),
+        new OpenBrowserPlugin({ url: `http://${ip.address()}:${port}/` }),
     ]
 });
 
@@ -51,13 +51,13 @@ app.use(historyApiFallback({
 
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
-app.use(
-    '/',
-    proxy({ 
-        target: 'http://123.207.174.24:8000', 
-        changeOrigin: true
-    })
-);
+// app.use(
+//     '/',
+//     proxy({ 
+//         target: 'http://123.207.174.24:8000', 
+//         changeOrigin: true
+//     })
+// );
 
 app.get('/*', (req, res) => res.sendFile(__dirname + '/index.html'));
 

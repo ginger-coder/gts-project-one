@@ -1,34 +1,24 @@
-import AppHomePage from '../pages/home';
+import AdminPhysicalPage from '../pages/admin/physical';
 import PersonPage from '../pages/person';
 import LoginPage from '../pages/Login';
-import adminLayoutPage from '../layout/admin';
+import AdminLayoutPage from '../layout/admin';
 const routerData = {
-    'admin': [
+    admin: [
         {
-            path: '/home',
-            component: AppHomePage,
+            path: '/admin/physical',
+            component: AdminPhysicalPage,
             show: true,
             name: '体检管理',
-            routes: [{
-                path: '/home',
-                component: AppHomePage,
-            }]
+            routes: []
         },
         {
-            path: '/person',
+            path: '/admin/persion',
             show: true,
             component: PersonPage,
-            name: '体检管理',
-            routes: [{
-                path: '/person',
-                component: PersonPage,
-            }]
+            name: '用药管理',
+            routes: []
         }
-    ],
-    'login': {
-        path: '/login',
-        component: LoginPage
-    }
+    ]
 };
 
 const MainRouterConfig = [
@@ -36,9 +26,15 @@ const MainRouterConfig = [
         path: '/admin',
         name: '超级管理员',
         role: ['admin'],
-        component: adminLayoutPage
+        component: AdminLayoutPage
     },
-]
+    {
+        path: '/login',
+        name: '登录',
+        role: ['admin'],
+        component: LoginPage
+    }
+];
 
 
 export {

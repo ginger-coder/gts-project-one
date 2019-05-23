@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, Switch } from 'react-router-dom';
 import { Card, WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
 import RequestURL from 'api/requestAPI';
-import MenuPage from '../../components/menu';
-import { routerData } from 'config/routerConfig';
+import MainSubscription from '../../components/menu';
 
-export default class LoginPage extends Component {
+class AdminLayoutPage extends Component {
     constructor() {
         super();
         this.state = {
@@ -14,14 +13,24 @@ export default class LoginPage extends Component {
 
     componentDidMount() {
 
+
     }
 
     render() {
-
+        let { router } = this.props;
         return (
-            <div id="admin-main-container" className="admin-main-container">
-                <MenuPage routes={routerData.admin} />
+            <div className="admin-main-content">
+                <Switch>
+                    {
+                        router.map((el, index) => {
+                            return <Route path={el.path} key={index} component={el.component} />
+                        })
+                    }
+                </Switch>
             </div>
         )
     }
 }
+
+// export default AdminLayoutPage;
+export default MainSubscription(AdminLayoutPage,'admin');

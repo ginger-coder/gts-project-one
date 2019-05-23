@@ -38,7 +38,7 @@ let config = {
                 ]
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|css)$/,
                 use: extractCSS.extract({
                     use: ['css-loader','sass-loader']
                 })
