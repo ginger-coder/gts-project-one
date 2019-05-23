@@ -1,7 +1,9 @@
 import { bindActionCreators } from 'redux';
 import { actions } from './homeRedux';
 import { connect } from 'react-redux';
-import { Accordion, List } from 'antd-mobile';
+import { Accordion, List, Pagination, Icon, WhiteSpace } from 'antd-mobile';
+import { Link } from 'react-router-dom';
+import './assets/style/index.scss';
 let {
   getHomeDataAction
 } = actions;
@@ -44,10 +46,23 @@ export default class AppPhysical extends Component {
         <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
           <Accordion.Panel header="Title 1">
             <List className="my-list">
-              <List.Item>content 1</List.Item>
+              <List.Item>
+                  <Link to={'/'}>test</Link>
+              </List.Item>
             </List>
           </Accordion.Panel>
         </Accordion>
+        <WhiteSpace />
+        <div className="pagination-container" >
+          <Pagination total={5}
+            className="custom-pagination-with-icon"
+            current={1}
+            locale={{
+              prevText: (<span className="arrow-align"><Icon type="left" />上一步</span>),
+              nextText: (<span className="arrow-align">下一步<Icon type="right" /></span>),
+            }}
+          />
+        </div>
       </div>
     )
   }
