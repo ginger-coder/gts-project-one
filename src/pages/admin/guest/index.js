@@ -1,27 +1,8 @@
-import { bindActionCreators } from 'redux';
-import { actions } from './homeRedux';
-import { connect } from 'react-redux';
-import { Accordion, List, Pagination, Icon, WhiteSpace, SearchBar, WingBlank, Button } from 'antd-mobile';
+import { Accordion, List, Pagination, Icon, WhiteSpace, SearchBar } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import './assets/style/index.scss';
-let {
-  getHomeDataAction
-} = actions;
 
-@connect(
-  state => {
-    let {
-      homeData
-    } = state;
-    return {
-      homeData: [...homeData],
-    }
-  },
-  dispatch => bindActionCreators({
-    getHomeDataAction
-  }, dispatch)
-)
-export default class AppPhysical extends Component {
+export default class adminGuestManage extends Component {
   state = {
     homeData: [],
   }
@@ -34,30 +15,28 @@ export default class AppPhysical extends Component {
   }
 
   componentDidMount() {
-    // 请求商品详情数据
-    // console.log(this.props);
+
   }
 
   linkToPath = (path) => {
     this.props.history.replace(path);
-  } 
+  }
 
   render() {
     let { linkToPath } = this;
-
     return (
-      <div id="main" >
+      <div id="admin-guest-main" >
+        <Link to='/admin/guest/add' className="add-item-button" > + </Link>
         <SearchBar
           placeholder="查找"
           maxLength={8}
           onSubmit={value => console.log(value, 'onSubmit')}
         />
-
         <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
-          <Accordion.Panel header="Title 1">
+          <Accordion.Panel header="用户1">
             <List className="my-list">
-              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/physical/detail/1')} >查看</List.Item>
-              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/physical/edit/1')} >编辑</List.Item>
+              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/guest/detail/1')} >查看</List.Item>
+              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/guest/edit/1')}>编辑</List.Item>
               <List.Item arrow="horizontal">删除</List.Item>
             </List>
           </Accordion.Panel>
@@ -73,7 +52,7 @@ export default class AppPhysical extends Component {
             }}
           />
         </div>
-        <Link to='/admin/physical/add' className="add-item-button" > + </Link>
+        
       </div>
     )
   }

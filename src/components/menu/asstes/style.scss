@@ -1,7 +1,15 @@
+.am-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
 .menu-drawer {
     position: relative;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    margin-top:45px; 
     .am-drawer-sidebar {
         background-color: #fff;
         overflow: auto;

@@ -18,13 +18,35 @@ class AdminLayoutPage extends Component {
 
     render() {
         let { router } = this.props;
+
+        let childrenRoute = [];
+        let routes = router.map((el, index) => {
+            if (!el.show) return false;
+            let cRoute = el.routes;
+            if (cRoute.length > 0) {
+                childrenRoute = [...childrenRoute, ...cRoute];
+            }
+            return <Route path={el.path} key={index} exact={el.exact} component={el.component} />
+        });
+
+        childrenRoute = childrenRoute.map((el, index) => {
+            if (!el.show) return false;
+            return <Route path={el.path} key={index} exact={el.exact} component={el.component} />
+        })
+
+        console.error(childrenRoute);
+
+
         return (
+
             <div className="admin-main-content">
+
                 <Switch>
                     {
-                        router.map((el, index) => {
-                            return <Route path={el.path} key={index} component={el.component} />
-                        })
+                        routes
+                    }
+                    {
+                        childrenRoute
                     }
                 </Switch>
             </div>
@@ -33,4 +55,4 @@ class AdminLayoutPage extends Component {
 }
 
 // export default AdminLayoutPage;
-export default MainSubscription(AdminLayoutPage,'admin');
+export default MainSubscription(AdminLayoutPage, 'admin');

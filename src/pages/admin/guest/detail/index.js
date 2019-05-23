@@ -2,7 +2,7 @@ import { Card, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
 
-export default class adminPhysicalDetail extends Component {
+export default class adminGuestDetail extends Component {
     constructor() {
         super()
         this.state = {
@@ -20,7 +20,7 @@ export default class adminPhysicalDetail extends Component {
                 <WhiteSpace size="lg" />
                 <Card full>
                     <Card.Header
-                        title="This is title"
+                        title="详情页"
                         thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
                         extra={<span>this is extra</span>}
                     />

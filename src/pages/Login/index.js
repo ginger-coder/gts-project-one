@@ -42,13 +42,14 @@ export default class LoginPage extends Component {
 
   loginSend = () => {
     let { type, username, password } = this.state;
-    RequestURL.login({
-      type, username, password
-    })
-      .then((res) => {
-        console.log(res);
+    this.props.history.replace('/admin/physical')
+    // RequestURL.login({
+    //   type, username, password
+    // })
+    //   .then((res) => {
+    //     console.log(res);
 
-      })
+    //   })
   }
 
   render() {
