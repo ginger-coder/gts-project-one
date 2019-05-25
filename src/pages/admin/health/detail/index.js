@@ -2,7 +2,7 @@ import { Card, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
 
-export default class adminPhysicalDetail extends Component {
+export default class adminHealthDetail extends Component {
     constructor() {
         super()
         this.state = {

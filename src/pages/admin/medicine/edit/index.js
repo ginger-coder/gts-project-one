@@ -20,12 +20,12 @@ export default class adminUserEdit extends Component {
 
         return (
             <WingBlank size="lg">
-                <List style={{ margin: '5x 0' }} renderHeader={() => '修改用户'} className="my-list">
+                <List style={{ margin: '5x 0' }} renderHeader={() => '修改用药记录'} className="my-list">
                     <InputItem
                         clear
-                        placeholder="修改用户名"
+                        placeholder="修改药品名"
                         ref={el => this.autoFocusInst = el}
-                    >用户名</InputItem>
+                    >药品名</InputItem>
                     <InputItem
                         clear
                         placeholder="请输入备注信息"
@@ -33,7 +33,7 @@ export default class adminUserEdit extends Component {
                     >备注</InputItem>
                 </List>
                 <WhiteSpace />
-                <Button type="primary" onClick={()=>this.saveUserMsg('/admin/user')}>保存</Button>
+                <Button type="primary" onClick={()=>this.saveUserMsg('/admin/medicine')}>保存</Button>
             </WingBlank>
         )
     }

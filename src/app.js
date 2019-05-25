@@ -5,17 +5,17 @@ import './common/assets/reset.scss';
 import './common/assets/style.scss';
 
 const Routes = (props) => {
-  return(
+  
+  return (
     <Switch>
-      <Redirect from='/' exact to='/login'/>
       {
-          MainRouterConfig.map((item,index)=>{
-            return (
-                
-                <Route path={item.path} key={index} component={item.component}/>
-            )
-          })
-        }
+        MainRouterConfig.map((item, index) => {
+          return (
+            <Route path={item.path} key={index} component={item.component} />
+          )
+        })
+      }
+      <Redirect from='/' exact to='/login' />
     </Switch>
   )
 }

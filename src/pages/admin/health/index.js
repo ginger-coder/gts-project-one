@@ -26,17 +26,17 @@ export default class adminUserManage extends Component {
     let { linkToPath } = this;
     return (
       <div id="admin-user-main" >
-        <Link to='/admin/physical/add' className="add-item-button" > + </Link>
+        <Link to='/admin/health/add' className="add-item-button" > + </Link>
         <SearchBar
           placeholder="查找"
           maxLength={8}
           onSubmit={value => console.log(value, 'onSubmit')}
         />
         <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
-          <Accordion.Panel header="用户1">
+          <Accordion.Panel header="健康指南1">
             <List className="my-list">
-              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/user/detail/1')} >查看</List.Item>
-              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/user/edit/1')}>编辑</List.Item>
+              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/health/detail/1')} >查看</List.Item>
+              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/health/edit/1')}>编辑</List.Item>
               <List.Item arrow="horizontal">删除</List.Item>
             </List>
           </Accordion.Panel>

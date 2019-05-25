@@ -20,7 +20,7 @@ export default class adminUsersical extends Component {
 
         return (
             <WingBlank size="lg">
-                <List style={{ margin: '5x 0' }} renderHeader={() => '添加用户'} className="my-list">
+                <List style={{ margin: '5x 0' }} renderHeader={() => '添加用药记录'} className="my-list">
                     <InputItem
                         clear
                         placeholder="请输入用户"
@@ -33,7 +33,7 @@ export default class adminUsersical extends Component {
                     >备注</InputItem>
                 </List>
                 <WhiteSpace />
-                <Button type="primary" onClick={()=>this.saveUserMsg('/admin/user')}>保存</Button>
+                <Button type="primary" onClick={()=>this.saveUserMsg('/admin/medicine')}>保存</Button>
             </WingBlank>
         )
     }

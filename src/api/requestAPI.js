@@ -11,13 +11,12 @@ let req = axios.create({
 
 export default {
     /**
-     * 获取商品数据
-     * @param  {Object}    [params={}] ?page_size=20&category_id=60&page=1&sort=sort
+     * 登录
+     * @param  {Object}    [params={}] ?username=20&passward=60&type=1
      *     {
-     *         page_size:
-     *         category_id:
-     *         page:
-     *         sort
+     *         username:
+     *         passward:
+     *         type:
      *     }
      */
     login(params={}) {

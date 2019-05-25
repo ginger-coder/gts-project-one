@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Card, WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
-import './assets/style/index.css';
+import './assets/style/index.scss';
 import RequestURL from 'api/requestAPI';
 
 export default class LoginPage extends Component {
@@ -43,13 +43,13 @@ export default class LoginPage extends Component {
   loginSend = () => {
     let { type, username, password } = this.state;
     this.props.history.replace('/admin/physical')
-    // RequestURL.login({
-    //   type, username, password
-    // })
-    //   .then((res) => {
-    //     console.log(res);
+    RequestURL.login({
+      type, username, password
+    })
+      .then((res) => {
+        console.log(res);
 
-    //   })
+      })
   }
 
   render() {

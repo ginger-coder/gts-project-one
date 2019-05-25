@@ -17,7 +17,6 @@ const MainSubscription = (WrappedComponent, type) => {
             routers: routerData[type]
         }
         onOpenChange = (...args) => {
-            console.log(args);
             this.setState({ open: !this.state.open });
         }
         render() {
