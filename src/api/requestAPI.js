@@ -19,8 +19,8 @@ export default {
      *         type:
      *     }
      */
-    login(params={}) {
-        return req.get('/user/login', {
+    requestData(type,params={}) {
+        return req.get(type, {
             params:{...params}
         })
             .then(res=>{

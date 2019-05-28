@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Card, WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
+import {  WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
 import './assets/style/index.scss';
 import RequestURL from 'api/requestAPI';
 
@@ -42,13 +42,35 @@ export default class LoginPage extends Component {
 
   loginSend = () => {
     let { type, username, password } = this.state;
-    this.props.history.replace('/admin/physical')
-    RequestURL.login({
+    
+    RequestURL.requestData('/user/login', {
       type, username, password
-    })
+  })
       .then((res) => {
-        console.log(res);
-
+        if (res.code == 0) {
+          Toast.success('登录成功', 1);
+          setTimeout(()=>{
+            let path = '';
+            switch (res.type) {
+              case 1:
+                path = '/user'
+                break;
+              case 2:
+                path = '/doctor'
+                break;
+              case 3:
+                path = '/oadmin'
+                break;
+              case 4:
+                path = '/admin'
+                break;
+            }
+            this.props.history.replace(path);
+          },200)
+        }else{
+            Toast.fail('登录失败', 1);
+        }
+          
       })
   }
 
@@ -97,7 +119,7 @@ export default class LoginPage extends Component {
           </List><WhiteSpace />
 
           <Button type="primary" onClick={this.loginSend}>登录</Button><WhiteSpace />
-          <Button type="primary">注册</Button><WhiteSpace />
+          <Button type="primary" onClick={()=>{this.props.history.replace('/register')}} >注册</Button><WhiteSpace />
           <WhiteSpace />
         </WingBlank>
       </div>

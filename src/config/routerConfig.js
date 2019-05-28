@@ -1,4 +1,5 @@
 import LoginPage from '../pages/Login';
+import RegisterPage from '../pages/register';
 
 //社区用户
 
@@ -550,7 +551,12 @@ const MainRouterConfig = [
         path: '/login',
         name: '登录',
         component: LoginPage
-    }
+    },
+    {
+        path: '/register',
+        name: '注册',
+        component: RegisterPage
+    },
 ];
 
 

@@ -1,8 +1,18 @@
 
-import { List, InputItem, WhiteSpace, Button, WingBlank } from 'antd-mobile';
+import { List, InputItem, WhiteSpace, Button, WingBlank, Picker } from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import RequestURL from 'api/requestAPI';
 
 export default class doctorUsersical extends Component {
+    constructor() {
+        super();
+        this.state = {
+            des:'',
+            allUser: [],
+            activeId:[],
+        }
+    }
+
 
     componentWillReceiveProps(nP) {
 
@@ -10,28 +20,83 @@ export default class doctorUsersical extends Component {
 
     componentDidMount() {
 
+
+        this.getAllUser();
     }
 
-    saveUserMsg = (path) => {
-        this.props.history.replace(path);
+    getAllUser = (page = 1) => {
+        
+        RequestURL.requestData('/user/medicalist', {
+            page
+        })
+            .then((res) => {
+                if (res.code == 0) {
+                    
+                    this.setState({
+                        allUser: [...res.list.map((el,index)=>{
+                            return {
+                                value:el.id,
+                                label:el.username,
+                            }
+                        })]
+                    })
+                } else {
+                    Toast.fail('获取信息失败', 1);
+                }
+            })
+    }
+
+    saveUserMsg = (des, id ) => {
+        if(des == '' || id == 0) {
+            Toast.offline('请输入所有信息，再进行保存@-@！',1);
+            return false;
+        }
+        
+        RequestURL.requestData('/medical/add', {
+            id,
+            des
+        })
+            .then((res) => {
+                if (res.code == 0) {
+                    Toast.fail('填加成功', 1);
+                    setTimeout(e=>{
+                        this.props.history.replace('/doctor/medicine');
+                    },500);
+                } else {
+                    Toast.fail('获取信息失败', 1);
+                }
+            })
+        
     }
 
     render() {
-
+        let { des, allUser, activeId } = this.state;
         return (
             <WingBlank size="lg">
                 <List style={{ margin: '5x 0' }} renderHeader={() => '添加用药记录'} className="my-list">
+                    <Picker 
+                        data={allUser} 
+                        cols={1} 
+                        className="forss"
+                        value={activeId}
+                        onOk={(e)=>{
+                            this.setState({
+                                activeId:e
+                            })
+                        }}
+                    >
+                        <List.Item arrow="horizontal">选择用户</List.Item>
+                    </Picker>
                     <InputItem
                         clear
-                        placeholder="请输入用户"
-                    >用户名</InputItem>
-                    <InputItem
-                        clear
-                        placeholder="请输入备注信息"
-                    >备注</InputItem>
+                        placeholder="请输入用药说明"
+                        onChange={ e => this.setState({
+                            des: e,
+                        }) }
+                    >用药说明</InputItem>
                 </List>
                 <WhiteSpace />
-                <Button type="primary" onClick={()=>this.saveUserMsg('/doctor/medicine')}>保存</Button>
+                <Button type="primary" onClick={() => this.saveUserMsg(des,activeId[0])}>保存</Button>
             </WingBlank>
         )
     }

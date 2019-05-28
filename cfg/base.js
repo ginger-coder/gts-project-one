@@ -47,7 +47,8 @@ module.exports = {
             Route: ['react-router-dom', 'Route'],
             Router: ['react-router-dom', 'BrowserRouter'],
             connect: ['react-redux', 'connect'],
-            Provide: ['react-redux', 'Privide']
+            Provide: ['react-redux', 'Privide'],
+            Toast:['antd-mobile','Toast']
         })
     ],
 
