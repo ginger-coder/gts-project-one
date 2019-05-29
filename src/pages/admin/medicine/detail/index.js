@@ -21,7 +21,6 @@ export default class adminPhysicalDetail extends Component {
                 <Card full>
                     <Card.Header
                         title="This is title"
-                        thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
                         extra={<span>this is extra</span>}
                     />
                     <Card.Body>

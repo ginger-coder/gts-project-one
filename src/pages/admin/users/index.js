@@ -1,29 +1,75 @@
 import { Accordion, List, Pagination, Icon, WhiteSpace, SearchBar } from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import RequestURL from 'api/requestAPI';
 import './assets/style/index.scss';
 
 export default class adminUserManage extends Component {
   state = {
-    homeData: [],
-  }
-
-  componentWillReceiveProps(nP) {
-    // 如果切换了路由
-    if (nP.location.key !== this.props.location.key) {
-
-    }
+    medicalData: [],
+    page: 1,
+    totalCount: 0,
   }
 
   componentDidMount() {
-
+    let { page } = this.state;
+    this.loadData(page);
   }
 
   linkToPath = (path) => {
     this.props.history.replace(path);
   }
 
+  loadData = (page = 1) => {
+    // id:			数据id,
+    // username:	用户名,
+    // password:	用户密码,
+    // type:		用户身份,
+    // creatime:	添加时间,
+    let { medicalData } = this.state;
+    RequestURL.requestData('/user/list', {
+      page
+    })
+      .then((res) => {
+        if (res.code == 0) {
+          this.setState({
+            medicalData: [...res.list],
+            totalCount: res.pageDataCount * 10,
+          })
+        }
+      })
+  }
+
+  deleteDate = id => {
+    let { medicalData } = this.state;
+    RequestURL.requestData('/user/del', {
+      id
+    })
+      .then((res) => {
+        if (res.code == 0) {
+          medicalData = medicalData.filter((el, index) => {
+            return el.id !== id;
+          })
+          this.setState({
+            medicalData
+          })
+        }
+      })
+  }
   render() {
-    let { linkToPath } = this;
+    let { linkToPath, deleteDate } = this;
+    let { totalCount, page, medicalData } = this.state;
+
+    let loadData = medicalData.map((el,index)=>{
+      return (
+        <Accordion.Panel header={el.username} key={el.id}>
+            <List className="my-list">
+              <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/user/detail/${el.id}`)} >查看</List.Item>
+              <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/user/edit/${el.id}`)}>编辑</List.Item>
+              <List.Item arrow="horizontal" onClick={() => deleteDate(el.id)}>删除</List.Item>
+            </List>
+          </Accordion.Panel>
+      )
+    })
     return (
       <div id="admin-user-main" >
         <Link to='/admin/physical/add' className="add-item-button" > + </Link>
@@ -33,26 +79,22 @@ export default class adminUserManage extends Component {
           onSubmit={value => console.log(value, 'onSubmit')}
         />
         <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
-          <Accordion.Panel header="用户1">
-            <List className="my-list">
-              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/user/detail/1')} >查看</List.Item>
-              <List.Item arrow="horizontal" onClick={()=>linkToPath('/admin/user/edit/1')}>编辑</List.Item>
-              <List.Item arrow="horizontal">删除</List.Item>
-            </List>
-          </Accordion.Panel>
+          {
+            loadData
+          }
         </Accordion>
         <WhiteSpace />
         <div className="pagination-container" >
-          <Pagination total={5}
+          <Pagination total={totalCount}
             className="custom-pagination-with-icon"
-            current={1}
+            current={page}
             locale={{
               prevText: (<span className="arrow-align"><Icon type="left" />上一步</span>),
               nextText: (<span className="arrow-align">下一步<Icon type="right" /></span>),
             }}
           />
         </div>
-        
+
       </div>
     )
   }

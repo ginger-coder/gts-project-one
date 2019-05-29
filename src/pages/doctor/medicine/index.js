@@ -52,7 +52,7 @@ export default class doctorUserManage extends Component {
 
   deleteDate = id => {
     let { medicalData } = this.state;
-    RequestURL.requestData('/medicine/del', {
+    RequestURL.requestData('/medical/del', {
       id
     })
       .then((res) => {

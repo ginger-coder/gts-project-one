@@ -72,7 +72,7 @@ export default class AppPhysical extends Component {
             <List className="my-list">
               <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/physical/detail/${el.id}`)} >查看</List.Item>
               <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/physical/edit/${el.id}`)}>编辑</List.Item>
-              <List.Item arrow="horizontal" onClick={() => deleteDate(el.id)}>删除</List.Item>
+              <List.Item arrow="horizontal" onClick={() => this.deleteDate(el.id)}>删除</List.Item>
             </List>
           </Accordion.Panel>
       )
