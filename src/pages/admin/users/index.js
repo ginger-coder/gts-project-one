@@ -33,7 +33,7 @@ export default class adminUserManage extends Component {
         if (res.code == 0) {
           this.setState({
             medicalData: [...res.list],
-            totalCount: res.pageDataCount * 10,
+            totalCount: res.pageDataCount,
           })
         }
       })
@@ -72,7 +72,7 @@ export default class adminUserManage extends Component {
     })
     return (
       <div id="admin-user-main" >
-        <Link to='/admin/physical/add' className="add-item-button" > + </Link>
+        <Link to='/admin/user/add' className="add-item-button" > + </Link>
         <SearchBar
           placeholder="查找"
           maxLength={8}

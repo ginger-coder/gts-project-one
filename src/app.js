@@ -1,6 +1,6 @@
 import { Redirect, Switch } from "react-router-dom";
 import { MainRouterConfig } from "./config/routerConfig";
-import AuthorizedRoute from "./route/AuthorizedRoute";
+// import AuthorizedRoute from "./route/AuthorizedRoute";
 import './common/assets/reset.scss';
 import './common/assets/style.scss';
 

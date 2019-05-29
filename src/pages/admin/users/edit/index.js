@@ -42,14 +42,14 @@ export default class adminUserEdit extends Component {
     }
 
     loadMedicalInfo = () => {
-        RequestURL.requestData('/uesr/detail', {
+        RequestURL.requestData('/user/detail', {
             id: this.props.match.params.id
         })
             .then((res) => {
                 if (res.code == 0) {
                     this.setState({
                         username: res.username,
-                        des: res.des,
+                        password: res.password,
                     })
                 } else {
                     Toast.fail('获取信息失败', 1);
