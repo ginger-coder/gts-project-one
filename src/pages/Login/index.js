@@ -32,6 +32,12 @@ export default class LoginPage extends Component {
     ];
   }
 
+  setLocalForge = (data) => {
+    for (const key in data) {
+      localStorage.setItem(key,data[key]);
+    }
+}
+
   setLoginData = (stateType) => {
     return (val) => {
       this.setState({
@@ -49,6 +55,10 @@ export default class LoginPage extends Component {
       .then((res) => {
         if (res.code == 0) {
           Toast.success('登录成功', 1);
+          this.setLocalForge({
+            userid:res.userId,
+            type:res.type
+          })
           setTimeout(()=>{
             let path = '';
             switch (res.type) {

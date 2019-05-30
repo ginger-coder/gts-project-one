@@ -18,15 +18,15 @@ export default class adminUsersical extends Component {
               value: 4
             },
             {
-              lable: '社区管理员',
+              label: '社区管理员',
               value: 3
             },
             {
-              lable: '医生',
+              label: '医生',
               value: 2
             },
             {
-              lable: '普通用户',
+              label: '普通用户',
               value: 1
             },
       
@@ -56,7 +56,7 @@ export default class adminUsersical extends Component {
                 if (res.code == 0) {
                     Toast.fail('填加成功', 1);
                     setTimeout(e => {
-                        this.props.history.replace('/doctor/guest');
+                        this.props.history.replace('/oadmin/user');
                     }, 500);
                 } else {
                     Toast.fail('获取信息失败', 1);
@@ -103,10 +103,10 @@ export default class adminUsersical extends Component {
                                 password:e
                             })
                         }}
-                    >备注</InputItem>
+                    >密码</InputItem>
                 </List>
                 <WhiteSpace />
-                <Button type="primary" onClick={()=>this.saveUserMsg(type, username, password)}>保存</Button>
+                <Button type="primary" onClick={()=>this.saveUserMsg(type[0], username, password)}>保存</Button>
             </WingBlank>
         )
     }

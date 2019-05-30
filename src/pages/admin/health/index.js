@@ -94,8 +94,8 @@ export default class adminUserManage extends Component {
             className="custom-pagination-with-icon"
             current={page}
             locale={{
-              prevText: (<span className="arrow-align"><Icon type="left" />上一步</span>),
-              nextText: (<span className="arrow-align">下一步<Icon type="right" /></span>),
+              prevText: (<span className="arrow-align"><Icon type="left" />上一页</span>),
+              nextText: (<span className="arrow-align">下一页<Icon type="right" /></span>),
             }}
           />
         </div>

@@ -27,11 +27,6 @@ export default class userGuestMorderManage extends Component {
             <div id="user-Morder-main" >
 
                 <Link to='/user/guest/morder' className="add-item-button" > + </Link>
-                <SearchBar
-                    placeholder="查找"
-                    maxLength={8}
-                    onSubmit={value => console.log(value, 'onSubmit')}
-                />
                 <WingBlank>
                     <WhiteSpace />
                     <Card>

@@ -1,6 +1,5 @@
 
 import { List, InputItem, WhiteSpace, Button, WingBlank } from 'antd-mobile';
-import { Link } from 'react-router-dom';
 import RequestURL from 'api/requestAPI';
 
 export default class adminHealthAdd extends Component {

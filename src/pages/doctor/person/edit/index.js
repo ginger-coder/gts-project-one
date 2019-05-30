@@ -15,6 +15,23 @@ export default class doctorPersonEdit extends Component {
     saveUserMsg = () => {
         this.props.history.replace('/doctor/user');
     }
+    loadMedicalInfo = (id) => {
+        RequestURL.requestData('/user/detail', {
+            id
+        })
+            .then((res) => {
+                if (res.code == 0) {
+                    this.setState({
+                        username: res.username,
+                        password: res.password,
+                        type: this.userType[res.type],
+                        creatime: res.creatime,
+                    })
+                } else {
+                    Toast.fail('获取信息失败', 1);
+                }
+            })
+    }
 
     render() {
 

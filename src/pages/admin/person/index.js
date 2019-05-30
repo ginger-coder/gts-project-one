@@ -25,8 +25,7 @@ export default class adminPersonPage extends Component {
         <List.Item arrow="horizontal">
           <Link to="/admin/persion/edit">修改个人信息</Link>
         </List.Item>
-        <List.Item arrow="horizontal">注销登录</List.Item>
-        <List.Item arrow="horizontal" onClick={this.loginOut}>退出</List.Item>
+        <List.Item arrow="horizontal" onClick={this.loginOut} >注销登录</List.Item>
       </List>
     )
   }
