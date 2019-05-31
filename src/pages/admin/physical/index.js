@@ -62,6 +62,16 @@ export default class AppPhysical extends Component {
         }
       })
   }
+
+  pageCallback =(page) => {
+    this.setState({
+      page: page
+    },()=>{
+      this.loadData(page);
+    })
+    
+  }
+  
   render() {
     let { linkToPath } = this;
     let { totalCount, page, medicalData } = this.state;
@@ -80,11 +90,6 @@ export default class AppPhysical extends Component {
 
     return (
       <div id="main" >
-        <SearchBar
-          placeholder="查找"
-          maxLength={8}
-          onSubmit={value => console.log(value, 'onSubmit')}
-        />
 
         <Accordion defaultActiveKey="0" className="my-accordion" >
           {
@@ -96,9 +101,10 @@ export default class AppPhysical extends Component {
           <Pagination total={totalCount}
             className="custom-pagination-with-icon"
             current={page}
+            onChange={(e)=>{this.pageCallback(e)}}
             locale={{
-              prevText: (<span className="arrow-align"><Icon type="left" />上一步</span>),
-              nextText: (<span className="arrow-align">下一步<Icon type="right" /></span>),
+              prevText: (<span className="arrow-align"><Icon type="left" />上一页</span>),
+              nextText: (<span className="arrow-align">下一页Icon type="right" /></span>),
             }}
           />
         </div>

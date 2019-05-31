@@ -59,6 +59,15 @@ export default class adminUserManage extends Component {
         }
       })
   }
+  
+  pageCallback =(page) => {
+    this.setState({
+      page: page
+    },()=>{
+      this.loadData(page);
+    })
+    
+  }
 
   render() {
     let { linkToPath } = this;
@@ -93,9 +102,10 @@ export default class adminUserManage extends Component {
           <Pagination total={totalCount}
             className="custom-pagination-with-icon"
             current={page}
+            onChange={(e)=>{this.pageCallback(e)}}
             locale={{
-              prevText: (<span className="arrow-align"><Icon type="left" />上一步</span>),
-              nextText: (<span className="arrow-align">下一步<Icon type="right" /></span>),
+              prevText: (<span className="arrow-align"><Icon type="left" />上一页</span>),
+              nextText: (<span className="arrow-align">下一页<Icon type="right" /></span>),
             }}
           />
         </div>

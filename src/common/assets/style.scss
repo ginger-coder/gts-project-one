@@ -1,8 +1,20 @@
-.add-item-button{
-    position: fixed!important;
+@font-face {
+    font-family: "iconfont"; /* project id 1220256 */
+    src: url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.eot");
+    src: url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.eot?#iefix") format("embedded-opentype"),
+        url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.woff2") format("woff2"),
+        url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.woff") format("woff"),
+        url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.ttf") format("truetype"),
+        url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.svg#iconfont") format("svg");
+}
+.add-item-button {
+    position: fixed !important;
     top: 8px;
     right: 10px;
     z-index: 999;
     font-size: 24px;
-    color:#fff;
+    color: #fff!important;
+}
+.active{
+    color:#108ee9!important;
 }

@@ -24,12 +24,9 @@ export default class UserMedicinePage extends Component {
         <List.Item arrow="horizontal">
           <Link to="/user/guest/history">查询随访管理</Link>
         </List.Item>
-        <List.Item arrow="horizontal">
+        {/* <List.Item arrow="horizontal">
           <Link to="/user/guest/chat">数据折线图</Link>
-        </List.Item>
-        <List.Item arrow="horizontal">
-          <Link to="/user/guest/morder">医嘱</Link>
-        </List.Item>
+        </List.Item> */}
       </List>
     )
   }

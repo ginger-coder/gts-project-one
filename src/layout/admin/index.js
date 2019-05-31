@@ -1,4 +1,4 @@
-import { Link, Switch } from 'react-router-dom';
+import { Link, Switch, Redirect } from 'react-router-dom';
 import { Card, WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
 import RequestURL from 'api/requestAPI';
 import MainSubscription from '../../components/menu';
@@ -34,8 +34,6 @@ class AdminLayoutPage extends Component {
             return <Route path={el.path} key={index} exact={el.exact} component={el.component} />
         })
 
-        console.error(childrenRoute);
-
 
         return (
 
@@ -48,6 +46,7 @@ class AdminLayoutPage extends Component {
                     {
                         childrenRoute
                     }
+                    <Redirect from='/admin' exact to='/admin/health' />
                 </Switch>
             </div>
         )

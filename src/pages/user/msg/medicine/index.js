@@ -18,8 +18,7 @@ export default class userMedHistory extends Component {
     }
 
     componentDidMount() {
-        let { page } = this.state;
-        this.loadData(page);
+        this.loadData();
     }
 
     loadData = (id) => {
@@ -29,8 +28,7 @@ export default class userMedHistory extends Component {
             .then((res) => {
                 if (res.code == 0) {
                     this.setState({
-                        medicalData: [...res.list],
-                        totalCount: res.pageDataCount * 10 || 0,
+                        medicalData: [...res.list]
                     })
                 }
             })
@@ -62,16 +60,6 @@ export default class userMedHistory extends Component {
                     }
                 </List>
                 <WhiteSpace size="lg" />
-                <div className="pagination-container" >
-                    <Pagination total={totalCount}
-                        className="custom-pagination-with-icon"
-                        current={page}
-                        locale={{
-                            prevText: (<span className="arrow-align"><Icon type="left" />上一步</span>),
-                            nextText: (<span className="arrow-align">下一步<Icon type="right" /></span>),
-                        }}
-                    />
-                </div>
             </div>
         )
     }

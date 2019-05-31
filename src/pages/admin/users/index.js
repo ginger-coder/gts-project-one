@@ -55,6 +55,16 @@ export default class adminUserManage extends Component {
         }
       })
   }
+  
+  pageCallback =(page) => {
+    this.setState({
+      page: page
+    },()=>{
+      this.loadData(page);
+    })
+    
+  }
+
   render() {
     let { linkToPath, deleteDate } = this;
     let { totalCount, page, medicalData } = this.state;
@@ -73,11 +83,7 @@ export default class adminUserManage extends Component {
     return (
       <div id="admin-user-main" >
         <Link to='/admin/user/add' className="add-item-button" > + </Link>
-        <SearchBar
-          placeholder="查找"
-          maxLength={8}
-          onSubmit={value => console.log(value, 'onSubmit')}
-        />
+
         <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
           {
             loadData
@@ -88,6 +94,7 @@ export default class adminUserManage extends Component {
           <Pagination total={totalCount}
             className="custom-pagination-with-icon"
             current={page}
+            onChange={(e)=>{this.pageCallback(e)}}
             locale={{
               prevText: (<span className="arrow-align"><Icon type="left" />上一页</span>),
               nextText: (<span className="arrow-align">下一页<Icon type="right" /></span>),

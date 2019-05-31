@@ -108,6 +108,7 @@ const routerData = {
         {
             path: '/admin/physical',
             component: AdminPhysicalPage,
+            icon:'icon-shouye',
             show: true,
             name: '体检管理',
             exact: true,
@@ -135,6 +136,7 @@ const routerData = {
         {
             path: '/admin/medicine',
             component: AdminMedicinePage,
+            icon:'icon-yaopin',
             show: true,
             name: '用药管理',
             exact: true,
@@ -162,6 +164,7 @@ const routerData = {
         {
             path: '/admin/guest',
             component: AdminGuestPage,
+            icon:'icon-yuedu',
             show: true,
             name: '随访管理',
             exact: true,
@@ -189,6 +192,7 @@ const routerData = {
         {
             path: '/admin/health',
             component: AdminHealthPage,
+            icon:'icon-yiyuan',
             show: true,
             name: '健康指南',
             exact: true,
@@ -216,6 +220,7 @@ const routerData = {
         {
             path: '/admin/user',
             component: AdminUserPage,
+            icon:'icon-xiaoxi',
             show: true,
             name: '用户管理',
             exact: true,
@@ -244,6 +249,7 @@ const routerData = {
             path: '/admin/persion',
             show: true,
             component: AdminPersonPage,
+            icon:'icon-wode',
             exact: true,
             name: '个人中心',
             routes: [
@@ -260,6 +266,7 @@ const routerData = {
         {
             path: '/oadmin/health',
             component: OAdminHealthPage,
+            icon:'icon-yiyuan',
             show: true,
             name: '健康指南',
             exact: true,
@@ -287,6 +294,7 @@ const routerData = {
         {
             path: '/oadmin/user',
             component: OAdminUserPage,
+            icon:'icon-xiaoxi',
             show: true,
             name: '用户管理',
             exact: true,
@@ -315,6 +323,7 @@ const routerData = {
             path: '/oadmin/persion',
             show: true,
             component: OAdminPersonPage,
+            icon:'icon-wode',
             exact: true,
             name: '个人中心',
             routes: [
@@ -331,6 +340,7 @@ const routerData = {
         {
             path: '/doctor/guest',
             component: DoctorGuestPage,
+            icon:'icon-zhishi',
             show: true,
             name: '随访管理',
             exact: true,
@@ -358,6 +368,7 @@ const routerData = {
         {
             path: '/doctor/medicine',
             component: DoctorMedicinePage,
+            icon:'icon-yaopin',
             show: true,
             name: '用药管理',
             exact: true,
@@ -385,6 +396,7 @@ const routerData = {
         {
             path: '/doctor/persion',
             show: true,
+            icon:'icon-wode',
             component: DoctorPersonPage,
             exact: true,
             name: '个人中心',
@@ -403,6 +415,7 @@ const routerData = {
             path: '/user/persion',
             show: true,
             component: UserPersonPage,
+            icon:'icon-wode',
             exact: true,
             name: '个人中心',
             routes: [
@@ -430,6 +443,7 @@ const routerData = {
             path: '/user/medicine',
             show: true,
             component: UserMedicinePage,
+            icon:'icon-yaopin',
             exact: true,
             name: '用药管理',
             routes: [
@@ -451,6 +465,7 @@ const routerData = {
             path: '/user/guest',
             show: true,
             component: UserGuestPage,
+            icon:'icon-zhishi',
             exact: true,
             name: '随访记录',
             routes: [
@@ -478,6 +493,7 @@ const routerData = {
             path: '/user/health',
             show: true,
             component: UserHealthPage,
+            icon:'icon-yiyuan',
             exact: true,
             name: '健康指南',
             routes: [
@@ -493,6 +509,7 @@ const routerData = {
             path: '/user/msg',
             show: true,
             component: UserMsgPage,
+            icon:'icon-xiaoxi',
             exact: true,
             name: '消息记录',
             routes: [

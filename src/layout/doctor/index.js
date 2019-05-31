@@ -1,4 +1,4 @@
-import { Link, Switch } from 'react-router-dom';
+import { Link, Switch, Redirect } from 'react-router-dom';
 import { Card, WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
 import RequestURL from 'api/requestAPI';
 import MainSubscription from '../../components/menu';
@@ -46,6 +46,10 @@ class doctorLayoutPage extends Component {
                     {
                         childrenRoute
                     }
+                    
+                   
+                    <Redirect from='/doctor' exact to='/doctor/medicine' />
+                    
                 </Switch>
             </div>
         )

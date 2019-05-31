@@ -3,6 +3,7 @@ import { MainRouterConfig } from "./config/routerConfig";
 // import AuthorizedRoute from "./route/AuthorizedRoute";
 import './common/assets/reset.scss';
 import './common/assets/style.scss';
+import './common/font/iconfont.css';
 
 const Routes = (props) => {
   

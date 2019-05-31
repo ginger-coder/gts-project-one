@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink  } from 'react-router-dom';
 import { Drawer, List, NavBar, Icon } from 'antd-mobile';
 import './asstes/style.scss';
 import { routerData } from '../../config/routerConfig';
@@ -27,9 +27,9 @@ const MainSubscription = (WrappedComponent, type) => {
             const sidebar = (<List>
                 {routers.map((route, index) => {
                     return (<List.Item key={index}
-                        thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
                     >
-                        <Link to={route.path} onClick={onOpenChange}>{route.name}</Link>
+                        <span className={`iconfont ${route.icon}`}></span>
+                        <NavLink  to={route.path} activeClassName="active" onClick={onOpenChange}>{route.name}</NavLink>
                     </List.Item>);
                 })}
             </List>);

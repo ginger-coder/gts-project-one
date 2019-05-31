@@ -1,18 +1,25 @@
 
-import { List } from 'antd-mobile';
+import { List, Carousel } from 'antd-mobile';
 const Item = List.Item;
 import RequestURL from 'api/requestAPI';
+
+const imgTags = (id) => {
+    return require(`../../../common/imgs/img${id}.jpg`);
+}
 
 export default class bhealthUserList extends Component {
     state = {
         medicalData: [],
         page: 1,
         totalCount: 0,
+        data: ['1', '2', '3'],
+        imgHeight: 175,
     }
 
     componentDidMount() {
         let { page } = this.state;
         this.loadData(page);
+        // simulate img loading
     }
 
     linkToPath = (path) => {
@@ -66,11 +73,39 @@ export default class bhealthUserList extends Component {
             )
         })
         return (
-            <List renderHeader={() => '健康指南'} className="my-list">
-                {
-                    loadData
-                }
-            </List>
+            <div>
+                <Carousel
+                    autoplay={false}
+                    infinite
+                    beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                    afterChange={index => console.log('slide to', index)}
+                >
+                    {this.state.data.map(val => (
+                        <a
+                            key={val}
+                            href="javascript:;"
+                            style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
+                        >
+                            <img
+                                src={`${imgTags(val)}`}
+                                alt=""
+                                style={{ width: '100%', verticalAlign: 'top' }}
+                                onLoad={() => {
+                                    // fire window resize event to change height
+                                    window.dispatchEvent(new Event('resize'));
+                                    this.setState({ imgHeight: 'auto' });
+                                }}
+                            />
+                        </a>
+                    ))}
+                </Carousel>
+                <List renderHeader={() => '健康指南'} className="my-list">
+                    {
+                        loadData
+                    }
+                </List>
+            </div>
+
         )
     }
 }

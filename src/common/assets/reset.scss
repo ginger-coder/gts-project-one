@@ -264,3 +264,10 @@ input[type='search'] {
 .fr {
     float: right;
 }
+a:link,
+a:hover,
+a:active,
+a:visited{
+  text-decoration: none;
+  color: #444;
+}
