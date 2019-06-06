@@ -30,6 +30,7 @@ import UserMsgGuest from '../pages/user/msg/guest';
 import UserHealthPage from '../pages/user/health';
 import UserHealthInfo from '../pages/user/health/info';
 
+import UserOrderList from '../pages/user/orderList';
 
 
 
@@ -539,6 +540,17 @@ const routerData = {
                 },
             ]
         },
+        {
+            path: '/user/orderlist',
+            show: true,
+            component: UserOrderList,
+            icon:'icon-xiaoxi',
+            exact: true,
+            name: '医生列表',
+            routes: [
+            ]
+        },
+        
 
     ]
 };
