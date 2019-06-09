@@ -8,6 +8,9 @@ let req = axios.create({
     timeout: 10000
 });
 
+const getUserId = () => {
+    return localStorage.getItem('userid');
+}
 
 export default {
     /**
@@ -20,8 +23,9 @@ export default {
      *     }
      */
     requestData(type,params={}) {
+        let user_id = getUserId();
         return req.get(type, {
-            params:{...params}
+            params:{...params,user_id}
         })
             .then(res=>{
                 if(res.status===200){

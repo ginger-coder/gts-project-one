@@ -7,14 +7,27 @@
         url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.ttf") format("truetype"),
         url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.svg#iconfont") format("svg");
 }
+#root{
+    height: 100%;
+}
 .add-item-button {
     position: fixed !important;
     top: 8px;
     right: 10px;
     z-index: 999;
     font-size: 24px;
-    color: #fff!important;
+    color: #fff !important;
 }
-.active{
-    color:#108ee9!important;
+.active {
+    color: #108ee9 !important;
+}
+.picker-list .am-list-item .am-list-line .am-list-extra {
+    flex-basis: initial;
+}
+.login-container{
+    height: 100%;
+    background: url('./img/bg.jpg') no-repeat 100% 100%;
+    .am-list-header{
+        color: #fff;
+    }
 }

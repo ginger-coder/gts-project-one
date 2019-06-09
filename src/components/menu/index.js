@@ -35,7 +35,7 @@ const MainSubscription = (WrappedComponent, type) => {
             </List>);
 
             return (<div>
-                <NavBar icon={<Icon type="ellipsis" />} onLeftClick={onOpenChange}> 医疗保健 </NavBar>
+                <NavBar icon={<Icon type="ellipsis" />} onLeftClick={onOpenChange}> 社区医疗服务 </NavBar>
                 <Drawer
                     className="menu-drawer"
                     style={{ minHeight: document.documentElement.clientHeight }}

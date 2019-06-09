@@ -40,7 +40,7 @@ export default class AppPhysical extends Component {
         if (res.code == 0) {
           this.setState({
             medicalData: [...res.list],
-            totalCount: res.pageDataCount * 10,
+            totalCount: res.pageDataCount,
           })
         }
       })
@@ -104,7 +104,7 @@ export default class AppPhysical extends Component {
             onChange={(e)=>{this.pageCallback(e)}}
             locale={{
               prevText: (<span className="arrow-align"><Icon type="left" />上一页</span>),
-              nextText: (<span className="arrow-align">下一页Icon type="right" /></span>),
+              nextText: (<span className="arrow-align">下一页<Icon type="right" /></span>),
             }}
           />
         </div>

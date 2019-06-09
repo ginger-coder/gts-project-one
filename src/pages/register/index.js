@@ -13,23 +13,14 @@ export default class LoginPage extends Component {
             password: '',
         }
         this.users = [
-            {
-                lable: '超级管理员',
-                type: 4
-            },
-            {
-                lable: '社区管理员',
-                type: 3
-            },
-            {
-                lable: '医生',
-                type: 2
-            },
-            {
+              {
                 lable: '普通用户',
                 type: 1
-            },
-
+              },
+              {
+                lable: '医生',
+                type: 2
+              }
         ];
     }
 
@@ -43,6 +34,11 @@ export default class LoginPage extends Component {
 
     registerSend = () => {
         let { type, username, password } = this.state;
+        if( username == '' || password == '' ){
+            Toast.fail('请补全信息再注册！', 1);
+            return false;
+        }
+
         RequestURL.requestData('/user/register', {
             type, username, password
         })
@@ -64,7 +60,7 @@ export default class LoginPage extends Component {
         let uesrItems = users.map((user, index) => {
             return (
                 <Flex.Item className="login-radio-item" style={{ padding: '15px 0 15px 15px', }} key={user.type}>
-                    <Radio className="login-radio" checked={type === user.type} onChange={e => this.setRegisterType('type')(user.type)}>
+                    <Radio className="login-radio" checked={type === user.type} onChange={e => this.setRegisterData('type')(user.type)}>
                         <span className="login-radio-text" >{user.lable}</span>
                     </Radio>
                 </Flex.Item>

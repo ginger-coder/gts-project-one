@@ -37,7 +37,7 @@ export default class adminUserManage extends Component {
         if (res.code == 0) {
           this.setState({
             medicalData: [...res.list],
-            totalCount: res.pageDataCount * 10,
+            totalCount: res.pageDataCount,
           })
         }
       })

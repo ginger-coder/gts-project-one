@@ -31,6 +31,7 @@ import UserHealthPage from '../pages/user/health';
 import UserHealthInfo from '../pages/user/health/info';
 
 import UserOrderList from '../pages/user/orderList';
+import UserMyOrderList from '../pages/user/myorder';
 
 
 
@@ -68,6 +69,9 @@ import DoctorMedicineAdd from '../pages/doctor/medicine/add';
 
 import DoctorPersonPage from '../pages/doctor/person';
 import DoctorPersonEdit from '../pages/doctor/person/edit';
+
+import DoctorMyOrderList from '../pages/doctor/history';
+import DoctorMyOrderPeopleList from '../pages/doctor/orderpeople';
 
 
 //超级管理员
@@ -410,6 +414,24 @@ const routerData = {
                 }
             ]
         },
+        {
+            path: '/doctor/order',
+            show: true,
+            icon:'icon-yaopin',
+            component: DoctorMyOrderList,
+            exact: true,
+            name: '预约管理',
+            routes: []
+        },
+        {
+            path: '/doctor/mypeople',
+            show: true,
+            icon:'icon-yaopin',
+            component: DoctorMyOrderPeopleList,
+            exact: true,
+            name: '出诊清单',
+            routes: []
+        },
     ],
     user: [
         {
@@ -544,9 +566,19 @@ const routerData = {
             path: '/user/orderlist',
             show: true,
             component: UserOrderList,
-            icon:'icon-xiaoxi',
+            icon:'icon-yaopin',
             exact: true,
             name: '医生列表',
+            routes: [
+            ]
+        },
+        {
+            path: '/user/myorder',
+            show: true,
+            component: UserMyOrderList,
+            icon:'icon-yiyuan',
+            exact: true,
+            name: '我的预约',
             routes: [
             ]
         },

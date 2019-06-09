@@ -15,4 +15,5 @@ module.exports = {
     store: rv('src/store'),
     public: rv('public'),
     node_modules: rv('node_modules'),
+
 };

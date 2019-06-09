@@ -13,22 +13,21 @@ export default class LoginPage extends Component {
     }
     this.users = [
       {
-        lable: '超级管理员',
-        type: 4
-      },
-      {
-        lable: '社区管理员',
-        type: 3
+        lable: '普通用户',
+        type: 1
       },
       {
         lable: '医生',
         type: 2
       },
       {
-        lable: '普通用户',
-        type: 1
+        lable: '社区管理员',
+        type: 3
       },
-
+      {
+        lable: '超级管理员',
+        type: 4
+      },
     ];
   }
 
@@ -62,16 +61,16 @@ export default class LoginPage extends Component {
           setTimeout(()=>{
             let path = '';
             switch (res.type) {
-              case 1:
+              case '1':
                 path = '/user'
                 break;
-              case 2:
+              case '2':
                 path = '/doctor'
                 break;
-              case 3:
+              case '3':
                 path = '/oadmin'
                 break;
-              case 4:
+              case '4':
                 path = '/admin'
                 break;
             }
@@ -129,7 +128,7 @@ export default class LoginPage extends Component {
           </List><WhiteSpace />
 
           <Button type="primary" onClick={this.loginSend}>登录</Button><WhiteSpace />
-          <Button type="primary" onClick={()=>{this.props.history.replace('/register')}} >注册</Button><WhiteSpace />
+          <Button type="primary" onClick={()=>{this.props.history.replace('/register')}} >去注册</Button><WhiteSpace />
           <WhiteSpace />
         </WingBlank>
       </div>
