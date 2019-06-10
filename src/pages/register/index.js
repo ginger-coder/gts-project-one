@@ -4,6 +4,8 @@ import { Toast, WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } fr
 import './assets/style/index.scss';
 import RequestURL from 'api/requestAPI';
 
+const RadioItem = Radio.RadioItem;
+
 export default class LoginPage extends Component {
     constructor() {
         super();
@@ -11,16 +13,32 @@ export default class LoginPage extends Component {
             type: 1,
             username: '',
             password: '',
+            name: '',
+            tele: '',
+            sontele: '',
+            address: '',
+            sexN: 1,
         }
         this.users = [
-              {
-                lable: '普通用户',
+            {
+                label: '社区用户',
                 type: 1
-              },
-              {
-                lable: '医生',
+            },
+            {
+                label: '医生',
                 type: 2
-              }
+            }
+        ];
+        this.sexData = [
+            {
+                label: '女',
+                value: 0
+            },
+            {
+                label: '男',
+                value: 1
+            },
+
         ];
     }
 
@@ -33,37 +51,43 @@ export default class LoginPage extends Component {
     }
 
     registerSend = () => {
-        let { type, username, password } = this.state;
-        if( username == '' || password == '' ){
+        let { type, username, password, sexN, name, tele, sontele, address } = this.state;
+        if (username == '' || password == '' || name == '' || tele == '' || sontele == '' || address == '') {
             Toast.fail('请补全信息再注册！', 1);
             return false;
         }
 
+        let sexName = this.sexData[sexN].label;
+
         RequestURL.requestData('/user/register', {
-            type, username, password
+            type, username, password, name, tele, sontele, address, sex: sexName
         })
             .then((res) => {
                 if (res.code == 0) {
                     Toast.success('注册成功，快去登录吧！', 1);
-                }else{
-                    Toast.fail('注册失败', 1);
+                } else {
+                    Toast.fail(res.msg, 1);
                 }
             })
+    }
+
+    onChangeSex = (val) => {
+        this.setState({
+            sex: val
+        })
     }
 
 
 
     render() {
-        let { type, username, password } = this.state;
-        let { users } = this;
+        let { type, username, password, sexN, name, tele, sontele, address } = this.state;
+        let { users, sexData } = this;
 
         let uesrItems = users.map((user, index) => {
             return (
-                <Flex.Item className="login-radio-item" style={{ padding: '15px 0 15px 15px', }} key={user.type}>
-                    <Radio className="login-radio" checked={type === user.type} onChange={e => this.setRegisterData('type')(user.type)}>
-                        <span className="login-radio-text" >{user.lable}</span>
-                    </Radio>
-                </Flex.Item>
+                <RadioItem key={user.type} checked={type === user.type} onChange={e => this.setRegisterData('type')(user.type)}>
+                    {user.label}
+                </RadioItem>
             )
         })
 
@@ -88,13 +112,52 @@ export default class LoginPage extends Component {
                                 this.setRegisterData('password')(e);
                             }}
                         >密码</InputItem>
+                        <InputItem
+                            type="text"
+                            placeholder="请输入昵称"
+                            value={name}
+                            onChange={e => {
+                                this.setRegisterData('name')(e);
+                            }}
+                        >昵称</InputItem>
+                        <WhiteSpace size="md" />
+                        <List renderHeader={() => '性别'} className="register-sex">
+                            {sexData.map(i => (
+                                <RadioItem key={i.value} checked={sexN === i.value} onChange={() => this.onChangeSex(i.value)} >
+                                    {i.label}
+                                </RadioItem>
+                            ))}
+                        </List>
+                        <WhiteSpace size="md" />
+                        <InputItem
+                            type="number"
+                            placeholder="请输入电话"
+                            value={tele}
+                            onChange={e => {
+                                this.setRegisterData('tele')(e);
+                            }}
+                        >电话</InputItem>
+                        <InputItem
+                            type="number"
+                            placeholder="请输入子女电话"
+                            value={sontele}
+                            onChange={e => {
+                                this.setRegisterData('sontele')(e);
+                            }}
+                        >子女电话</InputItem>
+                        <InputItem
+                            type="text"
+                            placeholder="请输入住址"
+                            value={address}
+                            onChange={e => {
+                                this.setRegisterData('address')(e);
+                            }}
+                        >住址</InputItem>
                     </List>
                     <List renderHeader={() => '用户类型'}>
-                        <Flex direction="column" justify="start" align="start" >
-                            {
-                                uesrItems
-                            }
-                        </Flex>
+                        {
+                            uesrItems
+                        }
                     </List><WhiteSpace />
 
                     <Button type="primary" onClick={this.registerSend} >注册</Button><WhiteSpace />

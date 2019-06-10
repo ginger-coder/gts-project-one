@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import {  WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
+import { WingBlank, WhiteSpace, List, InputItem, Radio, Flex, Button } from 'antd-mobile';
 import './assets/style/index.scss';
 import RequestURL from 'api/requestAPI';
+
+const RadioItem = Radio.RadioItem;
 
 export default class LoginPage extends Component {
   constructor() {
@@ -13,29 +15,33 @@ export default class LoginPage extends Component {
     }
     this.users = [
       {
-        lable: '普通用户',
+        label: '普通用户',
         type: 1
       },
       {
-        lable: '医生',
+        label: '医生',
         type: 2
       },
       {
-        lable: '社区管理员',
+        label: '社区管理员',
         type: 3
       },
       {
-        lable: '超级管理员',
+        label: '超级管理员',
         type: 4
       },
     ];
   }
 
+  componentDidMount(){
+    localStorage.clear();
+  }
+
   setLocalForge = (data) => {
     for (const key in data) {
-      localStorage.setItem(key,data[key]);
+      localStorage.setItem(key, data[key]);
     }
-}
+  }
 
   setLoginData = (stateType) => {
     return (val) => {
@@ -47,18 +53,18 @@ export default class LoginPage extends Component {
 
   loginSend = () => {
     let { type, username, password } = this.state;
-    
+
     RequestURL.requestData('/user/login', {
       type, username, password
-  })
+    })
       .then((res) => {
         if (res.code == 0) {
           Toast.success('登录成功', 1);
           this.setLocalForge({
-            userid:res.userId,
-            type:res.type
+            userid: res.userId,
+            type: res.type
           })
-          setTimeout(()=>{
+          setTimeout(() => {
             let path = '';
             switch (res.type) {
               case '1':
@@ -75,11 +81,11 @@ export default class LoginPage extends Component {
                 break;
             }
             this.props.history.replace(path);
-          },200)
-        }else{
-            Toast.fail('登录失败', 1);
+          }, 200)
+        } else {
+          Toast.fail('登录失败', 1);
         }
-          
+
       })
   }
 
@@ -89,11 +95,9 @@ export default class LoginPage extends Component {
 
     let uesrItems = users.map((user, index) => {
       return (
-        <Flex.Item className="login-radio-item" style={{ padding: '15px 0 15px 15px', }} key={user.type}>
-          <Radio className="login-radio" checked={type === user.type} onChange={e => this.setLoginData('type')(user.type)}>
-            <span className="login-radio-text" >{user.lable}</span>
-          </Radio>
-        </Flex.Item>
+        <RadioItem key={user.type} checked={type === user.type} onChange={e => this.setLoginData('type')(user.type)}>
+          {user.label}
+        </RadioItem>
       )
     })
 
@@ -120,15 +124,13 @@ export default class LoginPage extends Component {
             >密码</InputItem>
           </List>
           <List renderHeader={() => '用户类型'}>
-            <Flex direction="column" justify="start" align="start" >
               {
                 uesrItems
               }
-            </Flex>
           </List><WhiteSpace />
 
           <Button type="primary" onClick={this.loginSend}>登录</Button><WhiteSpace />
-          <Button type="primary" onClick={()=>{this.props.history.replace('/register')}} >去注册</Button><WhiteSpace />
+          <Button type="primary" onClick={() => { this.props.history.replace('/register') }} >去注册</Button><WhiteSpace />
           <WhiteSpace />
         </WingBlank>
       </div>

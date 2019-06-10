@@ -50,7 +50,7 @@ export default class HistoryManage extends Component {
             <div id="user-guest-history-main" >
 
                 <Link to='/user/medicine/history' className="add-item-button" > + </Link>
-                <List renderHeader={() => '随访记录'} className="my-list">
+                <List renderHeader={() => '用药记录'} className="my-list">
                     {
                         loadData
                     }

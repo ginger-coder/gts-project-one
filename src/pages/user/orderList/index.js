@@ -61,7 +61,7 @@ export default class UserOrderListManage extends Component {
     }
 
     loadData = (page = 1) => {
-        RequestURL.requestData('/order/listuser', {
+        RequestURL.requestData('/order/doctors', {
             page
         })
             .then((res) => {
@@ -126,11 +126,10 @@ export default class UserOrderListManage extends Component {
         let service = serverData.filter(e=>{ return e.value == activeServer[0] })[0].label;
         let address = addressData.filter(e=>{ return e.value == activeAddress[0] })[0].label;
         
-
         RequestURL.requestData('/order/addorder/', {
             id:activeId,
-            service:encodeURI(service),
-            address:encodeURI(address),
+            service:service,
+            address:address,
             time
         })
             .then((res) => {
@@ -221,11 +220,6 @@ export default class UserOrderListManage extends Component {
                     {
                         loadData
                     }
-                    <List.Item
-                        key={1}
-                        arrow="horizontal"
-                        onClick={() => { this.openMode(1) }}
-                    >医生</List.Item>
                 </List>
                 <WhiteSpace />
                 <div className="pagination-container" >

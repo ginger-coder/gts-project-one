@@ -3,7 +3,7 @@ const path = require('path');
 const dfPath = require('./path');
 const merge = require('webpack-merge');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const ClosureCompilerPlugin = require('webpack-closure-compiler');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack');
 
 const extractCSS = new extractTextWebpackPlugin('assets/css/[name]_[contenthash:6].css')
@@ -23,7 +23,7 @@ let config = {
     output: {
         path: dfPath.dist,
         filename: 'assets/js/[name]_[chunkhash].bundle.js',
-        publicPath: '/',
+        publicPath: './',
         chunkFilename: 'assets/js/[name].sepChunk.js',
 		hashDigestLength: 6
     },
@@ -132,7 +132,7 @@ let config = {
 		new webpack.EnvironmentPlugin({
 			NODE_ENV: 'production'
 		}),
-		new ClosureCompilerPlugin(),
+		new UglifyJsPlugin(),
     ],
 
     devtool: 'source-map',
