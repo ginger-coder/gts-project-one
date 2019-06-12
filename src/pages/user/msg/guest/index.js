@@ -39,7 +39,7 @@ export default class userGuestHistory extends Component {
     }
 
     render() {
-        let { medicalData } = this.state;
+        let { medicalData, totalCount , page } = this.state;
         let loadData = medicalData.map((el, index) => {
             return (
                 <List.Item extra={el.creatime} arrow="empty" className="spe" wrap key={el.id} >
@@ -50,25 +50,13 @@ export default class userGuestHistory extends Component {
             )
         })
         return (
-            <div id="user-guest-history-main" >
-
-                <Link to='/user/guest/history' className="add-item-button" > + </Link>
+            <div id="user-guest-history-main backbtn" >
+                <Link to='/user/msg' className="add-item-button backbtn" >返回</Link>
                 <List renderHeader={() => '随访记录'} className="my-list">
                     {
                         loadData
                     }
                 </List>
-                <WhiteSpace size="lg" />
-                <div className="pagination-container" >
-                    <Pagination total={totalCount}
-                        className="custom-pagination-with-icon"
-                        current={page}
-                        locale={{
-                            prevText: (<span className="arrow-align"><Icon type="left" />上一页</span>),
-                            nextText: (<span className="arrow-align">下一页<Icon type="right" /></span>),
-                        }}
-                    />
-                </div>
             </div>
         )
     }

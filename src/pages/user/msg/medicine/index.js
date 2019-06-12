@@ -53,7 +53,7 @@ export default class userMedHistory extends Component {
         return (
             <div id="user-guest-history-main" >
 
-                <Link to='/user/medicine/history' className="add-item-button" > + </Link>
+                <Link to='/user/msg' className="add-item-button backbtn" >返回</Link>
                 <List renderHeader={() => '用药记录'} className="my-list">
                     {
                         loadData

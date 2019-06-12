@@ -55,7 +55,7 @@ export default class userPersonPay extends Component {
         })
             .then((res) => {
                 if (res.code == 0) {
-                    Toast.fail('充值成功', 1);
+                    Toast.success('充值成功', 1);
                     setTimeout(e=>{
                         this.props.history.replace('/user/persion');
                     },500);

@@ -36,13 +36,14 @@ export default class userLoginHistory extends Component {
             return (
                 <List.Item extra={el.creatime} arrow="empty" className="spe" wrap key={el.id} >
                     {
-                        el.userId
+                        el.username
                     }
                 </List.Item>
             )
         })
         return (
             <div id="user-guest-history-main" >
+                <Link to='/user/msg' className="add-item-button backbtn" >返回</Link>
                 <List renderHeader={() => '登录记录'} className="my-list">
                     {
                         loadData

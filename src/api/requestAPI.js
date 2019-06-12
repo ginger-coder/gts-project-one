@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Toast } from 'antd-mobile';
 
 
 let req = axios.create({
@@ -24,6 +25,14 @@ export default {
      */
     requestData(type,params={}) {
         let user_id = getUserId();
+        
+        if( !user_id && location.pathname !== '/login' && location.pathname !== '/register'){
+            Toast.fail('登录失效，请重新登录！');
+            setTimeout(()=>{
+                location.href = '/login';
+            },500);
+            return false;
+        }
         return req.get(type, {
             params:{...params,user_id}
         })

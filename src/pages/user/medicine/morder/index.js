@@ -26,7 +26,7 @@ export default class MorderManage extends Component {
         return (
             <div id="user-Morder-main" >
 
-                <Link to='/user/medicine/morder' className="add-item-button" > + </Link>
+                <Link to='/user/medicine' className="add-item-button backbtn" >返回</Link>
                 <SearchBar
                     placeholder="查找"
                     maxLength={8}
@@ -45,17 +45,6 @@ export default class MorderManage extends Component {
                         <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
                     </Card>
                 </WingBlank>
-                <WhiteSpace size="lg" />
-                <div className="pagination-container" >
-                    <Pagination total={5}
-                        className="custom-pagination-with-icon"
-                        current={1}
-                        locale={{
-                            prevText: (<span className="arrow-align"><Icon type="left" />上一页</span>),
-                            nextText: (<span className="arrow-align">下一页Icon type="right" /></span>),
-                        }}
-                    />
-                </div>
             </div>
         )
     }

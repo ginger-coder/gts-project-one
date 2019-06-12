@@ -42,6 +42,7 @@ export default class userPayHistory extends Component {
         })
         return (
             <div id="user-guest-history-main" >
+                <Link to='/user/msg' className="add-item-button backbtn" >返回</Link>
                 <List renderHeader={() => '充值记录'} className="my-list">
                     {
                         loadData

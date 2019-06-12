@@ -75,12 +75,16 @@ export default class adminHealthEdit extends Component {
                     <InputItem
                         clear
                         placeholder="修改标题名"
-                        disabled={true}
+                        onChange={e=>{
+                            this.setState({
+                                title:e
+                            })
+                        }}
                         value={title}
                     >标题</InputItem>
                     <InputItem
                         clear
-                        placeholder="请输入备注信息"
+                        placeholder="内容"
                         onChange={e=>{
                             this.setState({
                                 content:e

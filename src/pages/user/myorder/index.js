@@ -58,20 +58,25 @@ export default class UserMyOrderListManage extends Component {
 
         let loadData = [];
         loadData = data.map((el, i) => {
-            return (<Card key={i}>
-                <Card.Header
-                    title={el.docname}
-                    extra={el.time}
-                />
-                <Card.Body>
-                    <div>
-                        {
-                            el.service
-                        }
-                    </div>
-                </Card.Body>
-                <Card.Footer content={el.address} />
-            </Card>)
+            return (
+                <div  key={i} >
+                    <Card>
+                        <Card.Header
+                            title={el.docname}
+                            extra={el.time}
+                        />
+                        <Card.Body>
+                            <div>
+                                {
+                                    el.service
+                                }
+                            </div>
+                        </Card.Body>
+                        <Card.Footer content={el.address} />
+                    </Card>
+                    <WhiteSpace />
+                </div>
+            )
         })
         
         return (

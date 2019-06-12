@@ -123,7 +123,7 @@ export default class LoginPage extends Component {
                         <WhiteSpace size="md" />
                         <List renderHeader={() => '性别'} className="register-sex">
                             {sexData.map(i => (
-                                <RadioItem key={i.value} checked={sexN === i.value} onChange={() => this.onChangeSex(i.value)} >
+                                <RadioItem key={i.value} checked={sexN === i.value} onChange={() => this.setRegisterData('sexN')(i.value)} >
                                     {i.label}
                                 </RadioItem>
                             ))}

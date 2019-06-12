@@ -7,7 +7,7 @@
         url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.ttf") format("truetype"),
         url("//at.alicdn.com/t/font_1220256_4thbq6pr0fc.svg#iconfont") format("svg");
 }
-#root{
+#root {
     height: 100%;
 }
 .add-item-button {
@@ -18,17 +18,30 @@
     font-size: 24px;
     color: #fff !important;
 }
+.backbtn {
+    font-size: 14px !important;
+    top: 15px !important;
+}
 .active {
     color: #108ee9 !important;
 }
 .picker-list .am-list-item .am-list-line .am-list-extra {
     flex-basis: initial;
 }
-.login-container{
+.login-container {
     height: auto;
     min-height: 100%;
-    background: url('./img/bg.jpg') no-repeat 100% 100%;
-    .am-list-header{
+    background: url("./img/bg.jpg") no-repeat 100% 100%;
+    .am-list-header {
         color: #fff;
     }
+}
+.am-list-item .am-list-line .am-list-content {
+    display: flex;
+}
+.calendar-list .right {
+    float: right;
+}
+.calendar-list .right {
+    float: right;
 }

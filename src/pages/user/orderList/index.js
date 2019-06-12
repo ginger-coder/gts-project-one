@@ -33,7 +33,7 @@ export default class UserOrderListManage extends Component {
                     value: 3,
                 },
                 {
-                    label: '吸谈',
+                    label: '吸痰',
                     value: 4,
                 },
             ],
