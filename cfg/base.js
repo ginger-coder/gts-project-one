@@ -45,7 +45,7 @@ module.exports = {
             PT: 'prop-types',
             _: 'lodash',
             Route: ['react-router-dom', 'Route'],
-            Router: ['react-router-dom', 'BrowserRouter'],
+            Router: ['react-router-dom', 'HashRouter'],
             connect: ['react-redux', 'connect'],
             Provide: ['react-redux', 'Privide'],
             Toast:['antd-mobile','Toast']
