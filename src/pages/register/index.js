@@ -28,14 +28,14 @@ export default class LoginPage extends Component {
                 label: '医生',
                 type: 2
             },
-            {
-                label: '社区管理员',
-                type: 3
-            },
-            {
-                label: '超级管理员',
-                type: 4
-            },
+            // {
+            //     label: '社区管理员',
+            //     type: 3
+            // },
+            // {
+            //     label: '超级管理员',
+            //     type: 4
+            // },
         ];
         this.sexData = [
             {
