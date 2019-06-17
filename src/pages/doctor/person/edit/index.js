@@ -42,7 +42,7 @@ export default class doctorPersonCwd extends Component {
         })
             .then((res) => {
                 if (res.code == 0) {
-                    Toast.fail('修改成功', 1);
+                    Toast.success('修改成功', 1);
                     setTimeout(e => {
                         this.props.history.replace('/doctor/persion');
                     }, 500);

@@ -68,6 +68,26 @@ export default class adminUserManage extends Component {
     
   }
 
+  findData = (title = '') => {
+    RequestURL.requestData('health/searchByKeyword', {
+      keyword:title
+    })
+        .then((res) => {
+            if (res.code == 0) {
+                this.setState({
+                  medicalData: [...res.list],
+                  totalCount:1,
+                  page:1,
+                })
+            }
+        })
+        .catch(error => {
+            this.setState({
+                doctors: []
+            })
+        })
+}
+
   render() {
     let { linkToPath } = this;
     let { totalCount, page, medicalData } = this.state;
@@ -89,7 +109,7 @@ export default class adminUserManage extends Component {
         <SearchBar
           placeholder="查找"
           maxLength={8}
-          onSubmit={value => console.log(value, 'onSubmit')}
+          onSubmit={value => this.findData(value)}
         />
         <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
           {

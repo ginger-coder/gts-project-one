@@ -24,6 +24,7 @@ export default class adminUserEdit extends Component {
         let { username, password } = this.state;
         let id = this.props.match.params.id;
         RequestURL.requestData('/user/update', {
+            type:4,
             id,
             username,
             password,

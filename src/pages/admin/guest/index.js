@@ -7,8 +7,8 @@ import RequestURL from 'api/requestAPI';
 export default class adminGuestManage extends Component {
   state = {
     data: [],
-    page:1,
-    totalCount:0,
+    page: 1,
+    totalCount: 0,
   }
 
   componentWillReceiveProps(nP) {
@@ -19,13 +19,13 @@ export default class adminGuestManage extends Component {
   }
 
   componentDidMount() {
-      this.loadData()
+    this.loadData()
   }
 
   linkToPath = (path) => {
     this.props.history.replace(path);
   }
-  loadData = ( page = 1 ) => {
+  loadData = (page = 1) => {
     // data{
     //   code: 0
     //   list: [{
@@ -42,7 +42,7 @@ export default class adminGuestManage extends Component {
       .then((res) => {
         if (res.code == 0) {
           this.setState({
-            data:[...res.list],
+            data: [...res.list],
             totalCount: res.pageDataCount || 0,
           })
         }
@@ -56,7 +56,7 @@ export default class adminGuestManage extends Component {
     })
       .then((res) => {
         if (res.code == 0) {
-          data = data.filter((el,index)=>{
+          data = data.filter((el, index) => {
             return el.id !== id;
           })
           this.setState({
@@ -66,13 +66,33 @@ export default class adminGuestManage extends Component {
       })
   }
 
-  pageCallback =(page) => {
+  pageCallback = (page) => {
     this.setState({
       page: page
-    },()=>{
+    }, () => {
       this.loadData(page);
     })
-    
+
+  }
+
+  findData = (title = '') => {
+    RequestURL.requestData('follow/searchByKeyword', {
+      keyword: title
+    })
+      .then((res) => {
+        if (res.code == 0) {
+          this.setState({
+            data: [...res.list],
+            totalCount: 1,
+            page: 1,
+          })
+        }
+      })
+      .catch(error => {
+        this.setState({
+          doctors: []
+        })
+      })
   }
 
 
@@ -80,15 +100,15 @@ export default class adminGuestManage extends Component {
     let { linkToPath, deleteDate } = this;
     let { totalCount, page, data } = this.state;
 
-    let loadData = data.map((el,index)=>{
+    let loadData = data.map((el, index) => {
       return (
         <Accordion.Panel header={el.username} key={el.id}>
-            <List className="my-list">
-              <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/guest/detail/${el.id}`)} >查看</List.Item>
-              <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/guest/edit/${el.id}`)}>编辑</List.Item>
-              <List.Item arrow="horizontal" onClick={() => deleteDate(el.id)}>删除</List.Item>
-            </List>
-          </Accordion.Panel>
+          <List className="my-list">
+            <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/guest/detail/${el.id}`)} >查看</List.Item>
+            <List.Item arrow="horizontal" onClick={() => linkToPath(`/admin/guest/edit/${el.id}`)}>编辑</List.Item>
+            <List.Item arrow="horizontal" onClick={() => deleteDate(el.id)}>删除</List.Item>
+          </List>
+        </Accordion.Panel>
       )
     })
 
@@ -98,26 +118,26 @@ export default class adminGuestManage extends Component {
         <SearchBar
           placeholder="查找"
           maxLength={8}
-          onSubmit={value => console.log(value, 'onSubmit')}
+          onSubmit={value => this.findData(value)}
         />
         <Accordion defaultActiveKey="0" className="my-accordion" >
-            {
-              loadData
-            }
+          {
+            loadData
+          }
         </Accordion>
         <WhiteSpace />
         <div className="pagination-container" >
           <Pagination total={totalCount}
             className="custom-pagination-with-icon"
             current={page}
-            onChange={(e)=>{this.pageCallback(e)}}
+            onChange={(e) => { this.pageCallback(e) }}
             locale={{
               prevText: (<span className="arrow-align" ><Icon type="left" />上一页</span>),
               nextText: (<span className="arrow-align" >下一页<Icon type="right" /></span>),
             }}
           />
         </div>
-        
+
       </div>
     )
   }

@@ -1,5 +1,5 @@
 
-import { List, InputItem, WhiteSpace, Button, WingBlank } from 'antd-mobile';
+import { List, InputItem, WhiteSpace, Button, WingBlank, TextareaItem } from 'antd-mobile';
 import RequestURL from 'api/requestAPI';
 
 export default class adminHealthEdit extends Component {
@@ -51,7 +51,7 @@ export default class adminHealthEdit extends Component {
                 if (res.code == 0) {
                     this.setState({
                         title: res.title,
-                        des: res.content,
+                        content: res.content,
                     })
                 } else {
                     Toast.fail('获取信息失败', 1);
@@ -82,16 +82,18 @@ export default class adminHealthEdit extends Component {
                         }}
                         value={title}
                     >标题</InputItem>
-                    <InputItem
+                    <TextareaItem
                         clear
                         placeholder="内容"
+                        autoHeight
+                        rows={15}
                         onChange={e=>{
                             this.setState({
                                 content:e
                             })
                         }}
                         value={content}
-                    >备注</InputItem>
+                    >内容</TextareaItem>
                 </List>
                 <WhiteSpace />
                 <Button type="primary" onClick={() => this.saveUserMsg()}>保存</Button>

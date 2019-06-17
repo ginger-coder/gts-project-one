@@ -300,7 +300,7 @@ const routerData = {
             path: '/oadmin/user',
             component: OAdminUserPage,
             icon:'icon-xiaoxi',
-            show: true,
+            show: false,
             name: '用户管理',
             exact: true,
             routes: [

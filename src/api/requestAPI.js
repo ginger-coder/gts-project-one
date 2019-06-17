@@ -34,7 +34,7 @@ export default {
         //     },500);
         //     return false;
         // }
-        return req.get(type, {
+        return req.get(type+'/', {
             params:{...params,user_id}
         })
             .then(res=>{

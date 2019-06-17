@@ -13,14 +13,14 @@ export default class adminUsersical extends Component {
             ],
         }
         this.users = [
-            {
-              label: '超级管理员',
-              value: 4
-            },
-            {
-              label: '社区管理员',
-              value: 3
-            },
+            // {
+            //   label: '超级管理员',
+            //   value: 4
+            // },
+            // {
+            //   label: '社区管理员',
+            //   value: 3
+            // },
             {
               label: '医生',
               value: 2
@@ -56,7 +56,7 @@ export default class adminUsersical extends Component {
                 if (res.code == 0) {
                     Toast.success('填加成功', 1);
                     setTimeout(e => {
-                        this.props.history.replace('/oadmin/user');
+                        this.props.history.replace('/admin/user');
                     }, 500);
                 } else {
                     Toast.fail('获取信息失败', 1);

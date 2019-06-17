@@ -79,8 +79,13 @@ export default class UserOrderListManage extends Component {
         })
             .then((res) => {
                 if (res.code == 0) {
+                    let { id, name } = res;
+                    
                     this.setState({
-                        doctors: [...res.list]
+                        doctors: [{
+                            id,
+                            username:name
+                        }]
                     })
                 }
             })
@@ -126,7 +131,7 @@ export default class UserOrderListManage extends Component {
         let service = serverData.filter(e=>{ return e.value == activeServer[0] })[0].label;
         let address = addressData.filter(e=>{ return e.value == activeAddress[0] })[0].label;
         
-        RequestURL.requestData('/order/addorder/', {
+        RequestURL.requestData('/order/addorder', {
             id:activeId,
             service:service,
             address:address,
