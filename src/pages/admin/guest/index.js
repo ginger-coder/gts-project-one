@@ -90,7 +90,7 @@ export default class adminGuestManage extends Component {
       })
       .catch(error => {
         this.setState({
-          doctors: []
+          data: []
         })
       })
   }

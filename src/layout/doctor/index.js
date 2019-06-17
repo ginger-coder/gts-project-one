@@ -30,9 +30,13 @@ class doctorLayoutPage extends Component {
         });
 
         childrenRoute = childrenRoute.map((el, index) => {
+            console.error(el);
             if (!el.show) return false;
             return <Route path={el.path} key={index} exact={el.exact} component={el.component} />
         })
+
+        
+        
 
 
         return (

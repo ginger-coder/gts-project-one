@@ -74,6 +74,26 @@ export default class doctorGuestManage extends Component {
     
   }
 
+  findData = (title = '') => {
+    RequestURL.requestData('/follow/searchByKeyword', {
+      keyword: title
+    })
+      .then((res) => {
+        if (res.code == 0) {
+          this.setState({
+            data: [...res.list],
+            totalCount: 1,
+            page: 1,
+          })
+        }
+      })
+      .catch(error => {
+        this.setState({
+          data: []
+        })
+      })
+  }
+
 
   render() {
     let { linkToPath, deleteDate } = this;
@@ -97,7 +117,7 @@ export default class doctorGuestManage extends Component {
         <SearchBar
           placeholder="查找"
           maxLength={8}
-          onSubmit={value => console.log(value, 'onSubmit')}
+          onSubmit={value => this.findData(value)}
         />
         <Accordion defaultActiveKey="0" className="my-accordion" >
             {

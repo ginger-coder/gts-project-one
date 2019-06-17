@@ -73,6 +73,8 @@ import DoctorPersonEdit from '../pages/doctor/person/edit';
 import DoctorMyOrderList from '../pages/doctor/history';
 import DoctorMyOrderPeopleList from '../pages/doctor/orderpeople';
 
+import DoctorMyOrderYiZhu from '../pages/doctor/orderpeople/yizhu';
+
 
 //超级管理员
 
@@ -430,7 +432,14 @@ const routerData = {
             component: DoctorMyOrderPeopleList,
             exact: true,
             name: '出诊清单',
-            routes: []
+            routes: [
+                {
+                    path: '/doctor/mypeople/yizhu/:id',
+                    show: true,
+                    component: DoctorMyOrderYiZhu,
+                    exact: false,
+                },
+            ]
         },
     ],
     user: [

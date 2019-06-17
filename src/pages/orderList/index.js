@@ -70,10 +70,6 @@ export default class UserOrderListManage extends Component {
                     {
                         loadData
                     }
-                    <List.Item
-                        arrow="horizontal"
-                        onClick={() => { }}
-                    >123</List.Item>
                 </List>
                 <WhiteSpace />
                 <div className="pagination-container" >

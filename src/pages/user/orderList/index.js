@@ -1,4 +1,4 @@
-import { List, Pagination, Icon, WhiteSpace, SearchBar, Modal, Picker, DatePicker } from 'antd-mobile';
+import { List, Pagination, Icon, WhiteSpace, SearchBar, Modal, Picker, DatePicker, InputItem } from 'antd-mobile';
 import RequestURL from 'api/requestAPI';
 
 export default class UserOrderListManage extends Component {
@@ -13,7 +13,8 @@ export default class UserOrderListManage extends Component {
             model: false,
             activeId: 0,
             activeServer: [],
-            activeAddress: [],
+            // activeAddress: [],
+            activeAddress:'',
             time: this.now,
             serverData: [
                 {
@@ -129,12 +130,12 @@ export default class UserOrderListManage extends Component {
         }
         // 医生id, 服务名称service，时间time，地点address
         let service = serverData.filter(e=>{ return e.value == activeServer[0] })[0].label;
-        let address = addressData.filter(e=>{ return e.value == activeAddress[0] })[0].label;
+        // let address = addressData.filter(e=>{ return e.value == activeAddress[0] })[0].label;
         
         RequestURL.requestData('/order/addorder', {
             id:activeId,
             service:service,
-            address:address,
+            address:activeAddress,
             time
         })
             .then((res) => {
@@ -198,7 +199,7 @@ export default class UserOrderListManage extends Component {
                         >
                             <List.Item arrow="horizontal">选择服务</List.Item>
                         </Picker>
-                        <Picker
+                        {/* <Picker
                             data={addressData}
                             cols={1}
                             className="forss"
@@ -206,7 +207,17 @@ export default class UserOrderListManage extends Component {
                             onOk={e => this.selectData('activeAddress')(e)}
                         >
                             <List.Item arrow="horizontal">选择出诊地址</List.Item>
-                        </Picker>
+                        </Picker> */}
+                        <InputItem
+                            clear
+                            placeholder="请输入出诊地址"
+                            value={activeAddress}
+                            onChange={e=>{
+                                this.setState({
+                                    activeAddress:e
+                                })
+                            }}
+                        >出诊地址</InputItem>
                         <DatePicker
                             value={time}
                             onChange={time => this.setState({ time })}

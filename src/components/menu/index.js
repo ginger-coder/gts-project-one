@@ -26,11 +26,14 @@ const MainSubscription = (WrappedComponent, type) => {
             let { onOpenChange } = this;
             const sidebar = (<List>
                 {routers.map((route, index) => {
-                    return (<List.Item key={index}
+                    if(route.show){
+                        return (<List.Item key={index}
                     >
                         <span className={`iconfont ${route.icon}`}></span>
                         <NavLink  to={route.path} activeClassName="active" onClick={onOpenChange}>{route.name}</NavLink>
                     </List.Item>);
+                    }
+                    
                 })}
             </List>);
 

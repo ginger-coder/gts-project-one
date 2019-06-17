@@ -1,5 +1,6 @@
 import { WhiteSpace, WingBlank, Pagination, Icon, List } from 'antd-mobile';
 import RequestURL from 'api/requestAPI';
+import { Link } from 'react-router-dom';
 
 export default class doctorMyPeopleListManage extends Component {
     constructor() {
@@ -56,8 +57,10 @@ export default class doctorMyPeopleListManage extends Component {
         let loadData = [];
         loadData = data.map((el, i) => {
             return (
-                <List arrow="horizontal" multipleLine onClick={() => {}}>
-                    <List.Item>{el.username}</List.Item>
+                <List arrow="horizontal" key={el.id}>
+                    <List.Item arrow="horizontal" onClick={() => this.linkToPath(`/doctor/mypeople/yizhu/${el.id}`) } >
+                        {el.username}
+                    </List.Item>
                 </List>
             )
         })

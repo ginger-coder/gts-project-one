@@ -1,4 +1,4 @@
-import { Card, WhiteSpace, WingBlank, Button, Pagination, Icon  } from 'antd-mobile';
+import { Card, WhiteSpace, WingBlank, Button, Pagination, Icon } from 'antd-mobile';
 import RequestURL from 'api/requestAPI';
 
 export default class UserMyOrderListManage extends Component {
@@ -51,7 +51,7 @@ export default class UserMyOrderListManage extends Component {
                 <div style={{ textAlign: 'center', padding: '15px' }} className="noContent" >
                     <p>暂无预约</p>
                     <WhiteSpace size="lg" />
-                    <Button type="primary" inline size="small" onClick={()=>this.linkToPath('/user/orderlist')} style={{ marginRight: '4px' }}>去预约</Button>
+                    <Button type="primary" inline size="small" onClick={() => this.linkToPath('/user/orderlist')} style={{ marginRight: '4px' }}>去预约</Button>
                 </div>
             )
         }
@@ -59,7 +59,7 @@ export default class UserMyOrderListManage extends Component {
         let loadData = [];
         loadData = data.map((el, i) => {
             return (
-                <div  key={i} >
+                <div key={i} >
                     <Card>
                         <Card.Header
                             title={el.docname}
@@ -71,14 +71,24 @@ export default class UserMyOrderListManage extends Component {
                                     el.service
                                 }
                             </div>
+                            <WhiteSpace size="sm" />
+                            {
+                                el.advice.length !== 0 ?
+                                    <div>
+                                        医嘱：{el.advice}
+                                    </div>
+                                    :
+                                    undefined
+                            }
                         </Card.Body>
                         <Card.Footer content={el.address} />
+                       
                     </Card>
                     <WhiteSpace />
                 </div>
             )
         })
-        
+
         return (
             <div id="my-order-doctor-main" >
                 <WhiteSpace size="lg" />
