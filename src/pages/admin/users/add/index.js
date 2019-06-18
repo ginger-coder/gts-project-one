@@ -13,14 +13,14 @@ export default class adminUsersical extends Component {
             ],
         }
         this.users = [
-            // {
-            //   label: '超级管理员',
-            //   value: 4
-            // },
-            // {
-            //   label: '社区管理员',
-            //   value: 3
-            // },
+            {
+              label: '超级管理员',
+              value: 4
+            },
+            {
+              label: '社区管理员',
+              value: 3
+            },
             {
               label: '医生',
               value: 2
