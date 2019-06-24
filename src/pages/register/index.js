@@ -24,10 +24,10 @@ export default class LoginPage extends Component {
                 label: '社区用户',
                 type: 1
             },
-            {
-                label: '医生',
-                type: 2
-            },
+            // {
+            //     label: '医生',
+            //     type: 2
+            // },
             // {
             //     label: '社区管理员',
             //     type: 3
@@ -169,7 +169,7 @@ export default class LoginPage extends Component {
                     </List><WhiteSpace />
 
                     <Button type="primary" onClick={this.registerSend} >注册</Button><WhiteSpace />
-                    <Button type="primary" onClick={() => { this.props.history.replace('/login') }} >已有帐号，去登录</Button><WhiteSpace />
+                    <Button type="primary" onClick={() => { this.props.history.push('/login') }} >已有帐号，去登录</Button><WhiteSpace />
                     <WhiteSpace />
                 </WingBlank>
             </div>

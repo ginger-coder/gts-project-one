@@ -31,7 +31,7 @@ export default class doctorGuestEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/doctor/guest');
+                        this.props.history.push('/doctor/guest');
                     }, 800)
 
                 } else {

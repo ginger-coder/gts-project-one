@@ -57,13 +57,12 @@ export default class userPersonPay extends Component {
                 if (res.code == 0) {
                     Toast.success('充值成功', 1);
                     setTimeout(e=>{
-                        this.props.history.replace('/user/persion');
+                        this.props.history.push('/user/persion');
                     },500);
                 } else {
                     Toast.fail('获取信息失败', 1);
                 }
             })
-        this.props.history.replace('/user/persion');
     }
 
     render() {

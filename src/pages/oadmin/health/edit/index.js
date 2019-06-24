@@ -34,7 +34,7 @@ export default class oadminHealthEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/oadmin/health');
+                        this.props.history.push('/oadmin/health');
                     }, 800)
 
                 } else {

@@ -133,7 +133,7 @@ const routerData = {
                     exact: false,
                 },
                 {
-                    path: '/admin/physical/add',
+                    path: '/admin/physical/add', 
                     show: false,
                     component: AdminPhysicalAdd,
                     exact: false,

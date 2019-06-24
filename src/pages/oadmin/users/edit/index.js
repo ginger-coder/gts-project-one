@@ -39,7 +39,7 @@ export default class oadminPersonEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/oadmin/user');
+                        this.props.history.push('/oadmin/user');
                     }, 800)
 
                 } else {

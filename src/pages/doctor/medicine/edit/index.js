@@ -32,7 +32,7 @@ export default class doctorUserEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/doctor/medicine');
+                        this.props.history.push('/doctor/medicine');
                     }, 800)
 
                 } else {

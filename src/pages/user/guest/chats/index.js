@@ -13,7 +13,7 @@ export default class UserGuestChatPage extends Component {
   }
 
   loginOut = () => {
-    this.props.history.replace('/login');
+    this.props.history.push('/login');
   }
 
 

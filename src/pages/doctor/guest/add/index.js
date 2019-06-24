@@ -56,7 +56,7 @@ export default class doctorGuestAdd extends Component {
                 if (res.code == 0) {
                     Toast.success('填加成功', 1);
                     setTimeout(e => {
-                        this.props.history.replace('/doctor/guest');
+                        this.props.history.push('/doctor/guest');
                     }, 500);
                 } else {
                     Toast.fail('获取信息失败', 1);

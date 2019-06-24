@@ -80,7 +80,7 @@ export default class LoginPage extends Component {
                 path = '/admin'
                 break;
             }
-            this.props.history.replace(path);
+            this.props.history.push(path);
           }, 200)
         } else {
           Toast.fail('登录失败', 1);
@@ -130,7 +130,7 @@ export default class LoginPage extends Component {
           </List><WhiteSpace />
 
           <Button type="primary" onClick={this.loginSend}>登录</Button><WhiteSpace />
-          <Button type="primary" onClick={() => { this.props.history.replace('/register') }} >去注册</Button><WhiteSpace />
+          <Button type="primary" onClick={() => { this.props.history.push('/register') }} >去注册</Button><WhiteSpace />
           <WhiteSpace />
         </WingBlank>
       </div>

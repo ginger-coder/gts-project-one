@@ -32,7 +32,7 @@ export default class adminUserEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/admin/medicine');
+                        this.props.history.push('/admin/medicine');
                     }, 800)
 
                 } else {

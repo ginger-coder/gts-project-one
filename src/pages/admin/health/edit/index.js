@@ -34,7 +34,7 @@ export default class adminHealthEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/admin/health');
+                        this.props.history.push('/admin/health');
                     }, 800)
 
                 } else {

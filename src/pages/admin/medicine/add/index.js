@@ -59,7 +59,7 @@ export default class adminUsersical extends Component {
                 if (res.code == 0) {
                     Toast.success('填加成功', 1);
                     setTimeout(e=>{
-                        this.props.history.replace('/admin/medicine');
+                        this.props.history.push('/admin/medicine');
                     },500);
                 } else {
                     Toast.fail('获取信息失败', 1);

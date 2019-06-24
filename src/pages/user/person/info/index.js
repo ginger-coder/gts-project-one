@@ -92,7 +92,7 @@ export default class userPersonInfo extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/user/persion');
+                        this.props.history.push('/user/persion');
                     }, 800)
                 } else {
                     Toast.fail('修改失败', 1);

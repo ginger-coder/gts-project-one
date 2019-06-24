@@ -44,7 +44,7 @@ export default class doctorPersonCwd extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(e => {
-                        this.props.history.replace('/doctor/persion');
+                        this.props.history.push('/doctor/persion');
                     }, 500);
                 } else {
                     Toast.fail('获取信息失败', 1);

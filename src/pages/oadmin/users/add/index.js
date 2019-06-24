@@ -56,7 +56,7 @@ export default class oadminUsersical extends Component {
                 if (res.code == 0) {
                     Toast.success('填加成功', 1);
                     setTimeout(e => {
-                        this.props.history.replace('/admin/user');
+                        this.props.history.push('/admin/user');
                     }, 500);
                 } else {
                     Toast.fail('获取信息失败', 1);

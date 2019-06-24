@@ -23,7 +23,7 @@ export default class bhealthUserList extends Component {
     }
 
     linkToPath = (path) => {
-        this.props.history.replace(path);
+        this.props.history.push(path);
     }
 
     loadData = (page = 1) => {
@@ -51,7 +51,7 @@ export default class bhealthUserList extends Component {
     }
 
     goToPath = (path) => {
-        this.props.history.replace(path);
+        this.props.history.push(path);
     }
 
 

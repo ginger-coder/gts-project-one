@@ -39,7 +39,7 @@ export default class adminPersonEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/admin/persion');
+                        this.props.history.push('/admin/persion');
                     }, 800)
 
                 } else {

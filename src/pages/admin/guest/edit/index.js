@@ -31,7 +31,7 @@ export default class adminGuestEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/admin/guest');
+                        this.props.history.push('/admin/guest');
                     }, 800)
 
                 } else {

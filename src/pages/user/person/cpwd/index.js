@@ -43,7 +43,7 @@ export default class userPersonCwd extends Component {
                 if (res.code == 0) {
                     Toast.success('填加成功', 1);
                     setTimeout(e=>{
-                        this.props.history.replace('/user/persion');
+                        this.props.history.push('/user/persion');
                     },500);
                 } else {
                     Toast.fail('获取信息失败', 1);

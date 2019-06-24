@@ -14,7 +14,7 @@ export default class UserOrderListManage extends Component {
     }
 
     linkToPath = (path) => {
-        this.props.history.replace(path);
+        this.props.history.push(path);
     }
 
     loadData = (page = 1) => {

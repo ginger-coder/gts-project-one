@@ -23,7 +23,7 @@ export default class adminGuestManage extends Component {
   }
 
   linkToPath = (path) => {
-    this.props.history.replace(path);
+    this.props.history.push(path);
   }
   loadData = (page = 1) => {
     // data{

@@ -13,7 +13,7 @@ export default class UserMedicinePage extends Component {
   }
 
   loginOut = () => {
-    this.props.history.replace('/login');
+    this.props.history.push('/login');
   }
 
 

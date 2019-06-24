@@ -27,7 +27,7 @@ export default class adminPhysicalEdit extends Component {
                 if (res.code == 0) {
                     Toast.success('修改成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/admin/physical');
+                        this.props.history.push('/admin/physical');
                     }, 800)
 
                 } else {

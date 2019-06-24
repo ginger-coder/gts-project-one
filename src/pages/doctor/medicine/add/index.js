@@ -60,7 +60,7 @@ export default class doctorUsersical extends Component {
                 if (res.code == 0) {
                     Toast.success('填加成功', 1);
                     setTimeout(e=>{
-                        this.props.history.replace('/doctor/medicine');
+                        this.props.history.push('/doctor/medicine');
                     },500);
                 } else {
                     Toast.fail('获取信息失败', 1);

@@ -31,7 +31,7 @@ export default class doctorYiZhu extends Component {
                 if (res.code == 0) {
                     Toast.success('添加成功', 1);
                     setTimeout(() => {
-                        this.props.history.replace('/doctor/mypeople');
+                        this.props.history.push('/doctor/mypeople');
                     }, 800)
 
                 } else {
